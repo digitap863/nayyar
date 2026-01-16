@@ -11,6 +11,7 @@ const Home = lazy(() => import("../Pages/User/Home.jsx"))
 const About = lazy(() => import("../Pages/User/About.jsx"))
 const Contact = lazy(() => import("../Pages/User/Contact.jsx"))
 const Blogs = lazy(() => import("../Pages/User/Blogs.jsx"))
+const BlogDetail = lazy(() => import("../Pages/User/BlogDetail.jsx"))
 
 
 
@@ -31,6 +32,8 @@ function MainRouter() {
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/blogs' element={<Blogs />} />
+        <Route path='/blog/:id' element={<BlogDetail />} />
+
 
 
         <Route path='*' element={<NotFound />} />
