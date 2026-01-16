@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: 'Inter Tight', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.font-InterTight {
+    font-family: 'Inter Tight', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.text-blablue{
+  color: #1D1EE3;
+}
+
+.bg-blablue{
+  background-color: #1D1EE3;
+}
