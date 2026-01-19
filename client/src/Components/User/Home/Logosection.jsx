@@ -25,8 +25,8 @@ function Logosection() {
         <div className="w-full relative -top-20 ">
         <div className="w-full bg-[#EFEFEF] py-12 md:pt-36 md:pb-0 ">
             {/* gradient in left  */}
-            <div className="absolute top-10 -left-20 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
-            <div className="absolute top-10 -right-20 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
+            <div className="absolute top-24 -left-24 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
+            <div className="absolute top-24 -right-24 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
 
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

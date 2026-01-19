@@ -119,12 +119,12 @@ function Setting() {
                                 />
 
                                 {/* Arrow Icon Button */}
-                                <div className="absolute top-6 right-6 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                                <div className="absolute top-6 right-6 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                     <FaArrowDown className='-rotate-120 text-blablue' />
                                 </div>
 
                                 {/* Title Overlay */}
-                                <div className="absolute bottom-2 left-2 right-2 bg-white text-black p-6 rounded-lg ">
+                                <div className="absolute bottom-2 left-2 right-2 bg-white group-hover:bg-[#1D1EE3] group-hover:text-white text-black p-6 rounded-lg transition-all duration-300 ">
                                     <h3 className="text-base font-semibold leading-tight">
                                         {step.title}
                                     </h3>

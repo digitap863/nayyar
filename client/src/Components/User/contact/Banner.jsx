@@ -97,13 +97,13 @@ function Banner() {
                         {officeImages.map((office, index) => (
                             <div
                                 key={office.id}
-                                className={`relative rounded-2xl overflow-hidden ${index === 2 ? 'col-span-2' : ''
+                                className={`relative rounded-2xl overflow-hidden group ${index === 2 ? 'col-span-2' : ''
                                     }`}
                             >
                                 <img
                                     src={office.image}
                                     alt={`${office.city} office`}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                 />
 
                                 {/* City Label */}

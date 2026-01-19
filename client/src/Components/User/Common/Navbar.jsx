@@ -1,17 +1,24 @@
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-    const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
-    const services = [
-        'Web Development',
-        'App Development',
-        'Digital Marketing',
-        'UI/UX Design',
+    const navLinks = [
+        { path: '/', label: 'Home' },
+        { path: '/about', label: 'About Us' },
+        { path: '/blogs', label: 'Blog' },
+        { path: '/services', label: 'Services' }
     ];
+
+    const isActive = (path) => {
+        if (path === '/') {
+            return location.pathname === '/';
+        }
+        return location.pathname.startsWith(path);
+    };
 
     return (
         <nav className=" absolute left-0 right-0 top-0 z-50">
@@ -26,61 +33,25 @@ const Navbar = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
-                        <Link
-                            to="/"
-                            className="text-blablue hover:text-blue-700 transition-colors font-medium"
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            to="/about"
-                            className="text-[#03030F] hover:text-gray-900 transition-colors"
-                        >
-                            About Us
-                        </Link>
-                        <Link
-                            to="/blog"
-                            className="text-[#03030F] hover:text-gray-900 transition-colors"
-                        >
-                            Blog
-                        </Link>
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.path}
+                                to={link.path}
+                                className={`relative font-medium transition-colors group ${isActive(link.path)
+                                        ? 'text-blablue'
+                                        : 'text-[#03030F] hover:text-blablue'
+                                    }`}
+                            >
+                                {link.label}
+                                {/* Underline animation */}
+                                <span className={`absolute left-0 bottom-0 h-0.5 bg-blablue transition-all duration-300 ${isActive(link.path)
+                                        ? 'w-full'
+                                        : 'w-0 group-hover:w-full'
+                                    }`}></span>
+                            </Link>
+                        ))}
 
-                        {/* Services Dropdown */}
-                        <div
-                            className="relative"
-                            onMouseEnter={() => setIsServicesOpen(true)}
-                            onMouseLeave={() => setIsServicesOpen(false)}
-                        >
-                            <button className="flex items-center space-x-1 text-[#03030F] hover:text-gray-900 transition-colors">
-                                <span>Services</span>
-                                <ChevronDown
-                                    className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''
-                                        }`}
-                                />
-                            </button>
 
-                            {/* Dropdown Menu */}
-                            {isServicesOpen && (
-                                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 border border-gray-100">
-                                    {services.map((service, index) => (
-                                        <Link
-                                            key={index}
-                                            to={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
-                                            className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blablue transition-colors"
-                                        >
-                                            {service}
-                                        </Link>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        <Link
-                            to="/solutions"
-                            className="text-[#03030F] hover:text-gray-900 transition-colors"
-                        >
-                            Solutions
-                        </Link>
                     </div>
 
                     {/* Contact Us Button & Arrow Icon */}
@@ -148,41 +119,14 @@ const Navbar = () => {
                             Blog
                         </Link>
 
-                        {/* Mobile Services */}
-                        <div>
-                            <button
-                                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                                className="flex items-center justify-between w-full py-2 text-[#03030F] hover:text-gray-900"
-                            >
-                                <span>Services</span>
-                                <ChevronDown
-                                    className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''
-                                        }`}
-                                />
-                            </button>
-                            {isServicesOpen && (
-                                <div className="pl-4 space-y-2 mt-2">
-                                    {services.map((service, index) => (
-                                        <Link
-                                            key={index}
-                                            to={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
-                                            className="block py-2 text-[#03030F] hover:text-blablue"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
-                                            {service}
-                                        </Link>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
                         <Link
-                            to="/solutions"
+                            to="/services"
                             className="block py-2 text-[#03030F] hover:text-gray-900"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
-                            Solutions
+                            Services
                         </Link>
+
                         <Link
                             to="/contact"
                             className="block py-2 text-gray-900 hover:text-blablue font-medium"
