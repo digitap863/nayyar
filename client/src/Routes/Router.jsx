@@ -24,8 +24,6 @@ const TestimonialList = lazy(() => import("../Pages/Admin/TestimonialList.jsx"))
 const EditTestimonial = lazy(() => import("../Pages/Admin/EditTestimonial.jsx"));
 const AddTestimonial = lazy(() => import("../Pages/Admin/AddTestimonial.jsx"));
 
-const GalleryList = lazy(() => import("../Pages/Admin/GalleryList.jsx"));
-const AddGallery = lazy(() => import("../Pages/Admin/AddGallery.jsx"));
 
 const BlogList = lazy(() => import("../Pages/Admin/BlogList.jsx"));
 const AddBlog = lazy(() => import("../Pages/Admin/AddBlog.jsx"));
@@ -72,8 +70,6 @@ function MainRouter() {
           <Route path="/admin/testimonial" element={<AddTestimonial />} />
           <Route path="/admin/testimoniallist" element={<TestimonialList />} />
           <Route path="/admin/testimonial/edit/:id" element={<EditTestimonial />} />
-          <Route path="/admin/gallery" element={<AddGallery />} />
-          <Route path="/admin/gallerylist" element={<GalleryList />} />
           <Route path="/admin/blog" element={<AddBlog />} />
           <Route path="/admin/bloglist" element={<BlogList />} />
           <Route path="/admin/blog/edit/:id" element={<EditBlog />} />

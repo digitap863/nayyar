@@ -11,29 +11,29 @@ const router = express.Router();
 console.log("inside the route")
 router.post("/login", adminLogin)
 
-router.post("/add-service", authMiddleware,upload.single('Image'), createService)
+router.post("/add-service", authMiddleware, upload.single('Image'), createService)
 router.get("/services", getServices)
 router.get("/service/:id", singleService)
 router.get("/service-desc/:id", singleServiceDesc)
 router.get("/service-description-one/:id", singleServiceDescription)
 router.get("/servicenames", singleServiceNames)
 router.delete("/service/:id", authMiddleware, deleteService)
-router.put("/service/:id",authMiddleware, upload.single('Image'), updateService);
+router.put("/service/:id", authMiddleware, upload.single('Image'), updateService);
 
 
 //storin the imahe in tot the cloudinary..
 router.post('/upload-editor-image', upload.single('image'), uploadEditorImage);
 
-router.get("/testimonials",getTestimonials)
-router.get("/testimonials/:id",getTestimonialsById)
-router.post("/testimonials", authMiddleware,upload.single('Image'), addTestimonial)
-router.put("/testimonials/:id",upload.single('Image'),updateTestimonial)
-router.delete("/testimonials/:id",deleteTestimonial)
+router.get("/testimonials", getTestimonials)
+router.get("/testimonials/:id", getTestimonialsById)
+router.post("/testimonials", authMiddleware, upload.single('Image'), addTestimonial)
+router.put("/testimonials/:id", upload.single('Image'), updateTestimonial)
+router.delete("/testimonials/:id", deleteTestimonial)
 
 
-router.get("/gallery",getGallerys)
-router.post("/gallery", authMiddleware,upload.single('Image'), addGallery)
-router.delete("/gallery/:id",deleteGallery)
+router.get("/gallery", getGallerys)
+router.post("/gallery", authMiddleware, upload.single('Image'), addGallery)
+router.delete("/gallery/:id", deleteGallery)
 
 // Blog routes
 router.get("/blogs", getBlogs)

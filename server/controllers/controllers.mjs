@@ -3,12 +3,10 @@ import fs from 'fs';
 import jwt from "jsonwebtoken";
 import path from 'path';
 import { fileURLToPath } from 'url';
-import cloudinary from "../config/cloudinary.mjs";
 import Blog from "../model/blog.mjs";
 import Gallery from "../model/gallery.mjs";
-import { ServiceModel } from '../model/serviceModel.mjs';
-import Testimonial from '../model/testimonial.mjs';
 import Team from "../model/team.mjs";
+import Testimonial from '../model/testimonial.mjs';
 
 
 // Convert import.meta.url to a filename
@@ -26,7 +24,7 @@ const adminLogin = (req, res) => {
     try {
 
         const { email, password } = req.body.data;
-        console.log(email,password,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        console.log(email, password, "!!!!!!!!!!!!!!!!!!!!!!")
 
         if (email && password) {
             if (adminCredentials.adminid !== email) {
@@ -69,201 +67,27 @@ const deleteFile = (filePath) => {
     });
 };
 
-const createService = async (req, res) => {
-    console.log(req.body)
-    console.log(req.files)
-    try {
-      const { slug,heading,description,description1,eligibility,duration} = req.body;
-    
-    const uploadedImageUrl = req.file.path;
-
-    // Create a new service entry in MongoDB
-    const newService = new ServiceModel({
-        slug,
-        heading,
-        description,
-        Image: uploadedImageUrl, // Store the Cloudinary URL in MongoDB
-        description1,
-        eligibility,
-        duration
-    });
-  
-      await newService.save();
-      res.status(201).json({ message: 'Service created successfully!' ,success: true });
-    } catch (error) {
-        console.error('error in creating coures',error);
-      res.status(500).json({ message: 'Error creating Service', error });
-    }
-  };
-
- const getServices = async (req, res) => {
-    try {
-        const Services = await ServiceModel.find({});
-        
-        return res.status(200).send({ data: Services, success: true });
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send({ message: error.message, success: false });
-    }
-};
-
-const singleServiceNames = async (req, res) => {
-    try {
-        const Services = await ServiceModel.find({}, { _id: 1, heading: 1, Image: 1 });
-        return res.status(200).send({ data: Services, success: true })
-    } catch (error) {
-        console.log(error.message)
-        res.status(500).send({ message: error.message, success: false })
-    }
-}
-
- const singleService = async (req, res) => {
-    const { id } = req.params;
-    try {
-        // Use a projection to EXCLUDE the large description1 field
-        const service = await ServiceModel.findOne({ _id: id });
-        
-        return res.status(200).send({ data: service, success: true });
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send({ message: error.message, success: false });
-    }
-};
- const singleServiceDesc = async (req, res) => {
-    const { id } = req.params;
-    try {
-        // Use a projection to EXCLUDE the large description1 field
-        const service = await ServiceModel.findOne({ _id: id });
-        
-        return res.status(200).send({ data: service, success: true });
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send({ message: error.message, success: false });
-    }
-};
-
-// In your serviceController.js
-
- const singleServiceDescription = async (req, res) => {
-    const { id } = req.params;
-    try {
-        // Use a projection to INCLUDE ONLY the description1 field
-        const serviceDesc = await ServiceModel.findOne({ _id: id }, { description1: 1, _id: 0 });
-
-        if (!serviceDesc) {
-            return res.status(404).send({ message: 'Description not found', success: false });
-        }
-        
-        return res.status(200).send({ data: serviceDesc, success: true });
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send({ message: error.message, success: false });
-    }
-};
-
-const deleteService = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const data = await ServiceModel.findById({ _id: id });
-        if (!data) {
-            return res.status(404).send({ message: "data not found" });
-        }
-
-        const imagesToDelete = data.Image;
-
-        const publicId = imagesToDelete.split('/').pop().split('.')[0]; 
-
-        // Helper function to check if file exists and delete it
-        if (publicId) {
-            cloudinary.uploader.destroy(publicId, (error, result) => {
-                if (error) {
-                    console.error('Error deleting image from Cloudinary:', error);
-                } else {
-                    console.log('Image deleted C', result);
-                }
-            });
-        }
-        await  ServiceModel.findOneAndDelete({ _id: id })
-        res.status(200).send({ success: true, message: "Deleted Successfully" });
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ message: error.message, success: false });
-    }
-}
-
-
-const updateService = async (req, res) => {
-    try {
-        const { id } = req.params;
-
-        const existingService = await ServiceModel.findById(id);
-        if (!existingService) {
-            return res.status(404).json({ message: 'Service not found' });
-        }
-
-        // Destructure text fields from the request body
-        const {slug, heading, description, description1 , eligibility,duration } = req.body;
-
-        console.log(description, "description in updateService");
-
-        // Prepare the updated data object
-        const updatedData = {
-            slug,
-            heading,
-            description,
-            description1,
-            eligibility,
-            duration,
-        };
-
-        // If a new image is uploaded, multer will automatically handle uploading to Cloudinary
-        if (req.file) {
-            updatedData.Image = req.file.path; // req.file.path will be the Cloudinary URL
-        } else {
-            // If no new image is uploaded, keep the existing image
-            updatedData.Image = existingService.Image;
-        }
-
-        // Update the service with the new data
-        const updatedService = await ServiceModel.findByIdAndUpdate(id, updatedData, { new: true });
-
-        if (!updatedService) {
-            return res.status(404).json({ message: 'Service not found' });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: 'Service updated successfully',
-            service: updatedService,
-        });
-    } catch (error) {
-        console.error('Error updating service:', error);
-        res.status(500).json({ message: 'Internal server error', error });
-    }
-};
-
-
 
 
 
 const uploadEditorImage = async (req, res) => {
-  try {
-    // req.file.path contains the URL from Cloudinary (if you've configured multer-storage-cloudinary)
-    if (!req.file) {
-      return res.status(400).json({ success: false, message: 'No file uploaded.' });
+    try {
+        // req.file.path contains the URL from Cloudinary (if you've configured multer-storage-cloudinary)
+        if (!req.file) {
+            return res.status(400).json({ success: false, message: 'No file uploaded.' });
+        }
+
+        // Send the public URL of the uploaded image back to the frontend
+        res.status(200).json({
+            success: true,
+            message: 'Image uploaded successfully!',
+            url: req.file.path
+        });
+
+    } catch (error) {
+        console.error('Error uploading image to editor:', error);
+        res.status(500).json({ success: false, message: 'Server error during image upload.' });
     }
-
-    // Send the public URL of the uploaded image back to the frontend
-    res.status(200).json({
-      success: true,
-      message: 'Image uploaded successfully!',
-      url: req.file.path 
-    });
-
-  } catch (error) {
-    console.error('Error uploading image to editor:', error);
-    res.status(500).json({ success: false, message: 'Server error during image upload.' });
-  }
 };
 
 // Testimonial Controllers
@@ -277,17 +101,18 @@ const addTestimonial = async (req, res) => {
             return res.status(400).json({ success: false, message: 'Please provide name, position, and message.' });
         }
 
-        console.log(req.file)   
+        console.log(req.file)
 
-         const uploadedImageUrl = req.file.path;
+        const uploadedImageUrl = req.file.path;
         console.log(uploadedImageUrl)
 
 
         const newTestimonial = new Testimonial({
-             name, 
-             position,
-              message , 
-              Image: uploadedImageUrl, });
+            name,
+            position,
+            message,
+            Image: uploadedImageUrl,
+        });
         await newTestimonial.save();
         res.status(201).json({ success: true, message: 'Testimonial added successfully!', data: newTestimonial });
     } catch (error) {
@@ -307,10 +132,10 @@ const getTestimonials = async (req, res) => {
 };
 
 const getTestimonialsById = async (req, res) => {
-        const { id } = req.params;
+    const { id } = req.params;
     try {
         const service = await Testimonial.findOne({ _id: id });
-        
+
         return res.status(200).send({ data: service, success: true });
     } catch (error) {
         console.log(error.message);
@@ -358,7 +183,7 @@ const updateTestimonial = async (req, res) => {
             updatedData.Image = existingTestimonial.Image;
         }
 
-          const updatedTestimonial = await Testimonial.findByIdAndUpdate(id, updatedData, { new: true });
+        const updatedTestimonial = await Testimonial.findByIdAndUpdate(id, updatedData, { new: true });
 
         if (!updatedTestimonial) {
             return res.status(404).json({ message: 'Testimonial not found' });
@@ -404,7 +229,7 @@ const getGallerys = async (req, res) => {
 };
 
 const addGallery = async (req, res) => {
-     try {
+    try {
         console.log("i am in th post of the galleryassssssssssssssssssssssssssssssssssssssss")
         // For now, we are only handling text fields. Image can be added later.
         const { title } = req.body;
@@ -412,15 +237,16 @@ const addGallery = async (req, res) => {
             return res.status(400).json({ success: false, message: 'Please provide title, position, and message.' });
         }
 
-        console.log(req.file)   
+        console.log(req.file)
 
-         const uploadedImageUrl = req.file.path;
+        const uploadedImageUrl = req.file.path;
         console.log(uploadedImageUrl)
 
 
         const newgallery = new Gallery({
-             title, 
-              Image: uploadedImageUrl, });
+            title,
+            Image: uploadedImageUrl,
+        });
         await newgallery.save();
         res.status(201).json({ success: true, message: 'gallery added successfully!', data: newgallery });
     } catch (error) {
@@ -430,7 +256,7 @@ const addGallery = async (req, res) => {
 }
 
 const deleteGallery = async (req, res) => {
-        try {
+    try {
         const { id } = req.params;
         const deletedGallery = await Gallery.findByIdAndDelete(id);
 
@@ -452,7 +278,7 @@ const addBlog = async (req, res) => {
     try {
         console.log("Adding new blog post");
         const { heading, subHeading, description, authorName, authorPosition } = req.body;
-        
+
         if (!heading || !subHeading || !description || !authorName || !authorPosition) {
             return res.status(400).json({ success: false, message: 'Please provide all required fields.' });
         }
@@ -499,11 +325,11 @@ const getBlogById = async (req, res) => {
     const { id } = req.params;
     try {
         const blog = await Blog.findOne({ _id: id });
-        
+
         if (!blog) {
             return res.status(404).send({ message: 'Blog not found', success: false });
         }
-        
+
         return res.status(200).send({ data: blog, success: true });
     } catch (error) {
         console.log(error.message);
@@ -584,7 +410,7 @@ const addTeam = async (req, res) => {
     try {
         console.log("Adding new team member");
         const { name, position, linkedinlink } = req.body;
-        
+
         if (!name || !position || !linkedinlink) {
             return res.status(400).json({ success: false, message: 'Please provide all required fields.' });
         }
@@ -626,11 +452,11 @@ const getTeamById = async (req, res) => {
     const { id } = req.params;
     try {
         const team = await Team.findOne({ _id: id });
-        
+
         if (!team) {
             return res.status(404).send({ message: 'Team member not found', success: false });
         }
-        
+
         return res.status(200).send({ data: team, success: true });
     } catch (error) {
         console.log(error.message);
