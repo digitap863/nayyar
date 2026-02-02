@@ -11,14 +11,9 @@ const sidebarData = [
         link: "/admin/dashboard",
     },
     {
-        label: "Add Course",
-        icon: <FaPlus size={25} />,
-        link: "/admin/service"
-    },
-    {
-        label: "Course List",
+        label: "Services",
         icon: <FaNewspaper size={25} />,
-        link: "/admin/servicelist"
+        link: "/admin/services"
     },
     {
         label: "Add testimonial",
@@ -40,7 +35,7 @@ const sidebarData = [
         icon: <FaNewspaper size={25} />,
         link: "/admin/teamlist"
     },
-       {
+    {
         label: "Add Blog",
         icon: <FaPlus size={25} />,
         link: "/admin/blog"

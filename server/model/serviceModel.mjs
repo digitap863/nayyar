@@ -148,15 +148,14 @@ serviceFiveSchema.index(
 /* =========================
    MODEL REGISTRATION
 ========================= */
-mongoose.model('ServiceOne', serviceOneSchema);
-mongoose.model('ServiceTwo', serviceTwoSchema);
-mongoose.model('ServiceThree', serviceThreeSchema);
-mongoose.model('ServiceFour', serviceFourSchema);
-
-const serviceModel = mongoose.model('ServiceFive', serviceFiveSchema);
+const ServiceOne = mongoose.model('ServiceOne', serviceOneSchema);
+const ServiceTwo = mongoose.model('ServiceTwo', serviceTwoSchema);
+const ServiceThree = mongoose.model('ServiceThree', serviceThreeSchema);
+const ServiceFour = mongoose.model('ServiceFour', serviceFourSchema);
+const ServiceFive = mongoose.model('ServiceFive', serviceFiveSchema);
 
 /* =========================
-   EXPORT ONLY SERVICE FIVE
+   EXPORT ALL MODELS
 ========================= */
-export default serviceModel;
-
+export { ServiceFive, ServiceFour, ServiceOne, ServiceThree, ServiceTwo };
+export default ServiceFive;

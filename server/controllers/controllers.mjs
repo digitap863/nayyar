@@ -523,7 +523,10 @@ const deleteTeam = async (req, res) => {
 
 
 export {
-    addBlog, addGallery, addTeam, addTestimonial, adminLogin, createService, deleteBlog, deleteGallery, deleteService, deleteTeam, deleteTestimonial, getBlogById, getBlogs, getGallerys, getServices, getTeamById, getTeams, getTestimonialById, getTestimonials, getTestimonialsById, singleService, singleServiceDesc, singleServiceDescription,
-    singleServiceNames, updateBlog, updateService, updateTeam, updateTestimonial, uploadEditorImage
+    addBlog, addGallery, addTeam, addTestimonial, adminLogin,
+    deleteBlog, deleteGallery, deleteTeam, deleteTestimonial,
+    getBlogById, getBlogs, getGallerys, getTeamById, getTeams,
+    getTestimonialById, getTestimonials, getTestimonialsById,
+    updateBlog, updateTeam, updateTestimonial, uploadEditorImage
 };
 

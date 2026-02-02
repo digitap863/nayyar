@@ -1,5 +1,5 @@
 import express from 'express';
-import { addBlog, addGallery, addTeam, addTestimonial, adminLogin, createService, deleteBlog, deleteGallery, deleteService, deleteTeam, deleteTestimonial, getBlogById, getBlogs, getGallerys, getServices, getTeamById, getTeams, getTestimonials, getTestimonialsById, singleService, singleServiceDesc, singleServiceDescription, singleServiceNames, updateBlog, updateService, updateTeam, updateTestimonial, uploadEditorImage } from '../controllers/controllers.mjs';
+import { addBlog, addGallery, addTeam, addTestimonial, adminLogin, deleteBlog, deleteGallery, deleteTeam, deleteTestimonial, getBlogById, getBlogs, getGallerys, getTeamById, getTeams, getTestimonials, getTestimonialsById, updateBlog, updateTeam, updateTestimonial, uploadEditorImage } from '../controllers/controllers.mjs';
 import { upload } from '../helpers/multer.mjs';
 import { authMiddleware } from '../middleware/authMiddleware.mjs';
 
@@ -11,18 +11,11 @@ const router = express.Router();
 console.log("inside the route")
 router.post("/login", adminLogin)
 
-router.post("/add-service", authMiddleware, upload.single('Image'), createService)
-router.get("/services", getServices)
-router.get("/service/:id", singleService)
-router.get("/service-desc/:id", singleServiceDesc)
-router.get("/service-description-one/:id", singleServiceDescription)
-router.get("/servicenames", singleServiceNames)
-router.delete("/service/:id", authMiddleware, deleteService)
-router.put("/service/:id", authMiddleware, upload.single('Image'), updateService);
+// Note: Service routes are now in serviceRoutes.mjs
 
-
-//storin the imahe in tot the cloudinary..
+//storing the image in to the cloudinary..
 router.post('/upload-editor-image', upload.single('image'), uploadEditorImage);
+
 
 router.get("/testimonials", getTestimonials)
 router.get("/testimonials/:id", getTestimonialsById)

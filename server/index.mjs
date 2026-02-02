@@ -4,6 +4,8 @@ import express from "express";
 import morgan from "morgan";
 import { dbConnect } from "./config/db.mjs";
 import router from "./routes/routes.mjs";
+import serviceRoutes from "./routes/serviceRoutes.mjs";
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -18,6 +20,7 @@ app.use("/api/uploads", express.static("uploads"));
 
 dbConnect()
 app.use("/api/", router)
+app.use("/api/", serviceRoutes)
 
 
 
