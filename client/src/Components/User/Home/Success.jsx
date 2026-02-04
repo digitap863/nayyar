@@ -51,18 +51,20 @@ function Success() {
                     {processes.map((process) => (
                         <div
                             key={process.id}
-                            className={`${process.isActive ? 'bg-blablue' : 'bg-white'} rounded-3xl p-8`}
+                            className={`bg-white hover:bg-[#1D1EE3] rounded-3xl p-8 cursor-pointer transition-all duration-300 group`}
                         >
                             {/* Icon */}
-                            <img src={process.icon} alt="" className="mb-6 w-14 h-14" />
+                            <div className="mb-6 w-14 h-14 flex items-center justify-center">
+                                <img src={process.icon} alt="" className="w-full h-full   transition-all duration-300" />
+                            </div>
 
                             {/* Title */}
-                            <h3 className={`text-xl font-semibold mb-3 ${process.isActive ? 'text-white' : 'text-black'}`}>
+                            <h3 className={`text-xl font-semibold mb-3 text-black group-hover:text-white transition-colors duration-300`}>
                                 {process.title}
                             </h3>
 
                             {/* Description */}
-                            <p className={`text-sm ${process.isActive ? 'text-blue-100' : 'text-gray-600'}`}>
+                            <p className={`text-sm text-gray-600 group-hover:text-white transition-colors duration-300`}>
                                 {process.description}
                             </p>
                         </div>

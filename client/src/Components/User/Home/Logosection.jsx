@@ -22,7 +22,7 @@ function Logosection() {
     ]
 
     return (
-        <div className="w-full relative -top-20 ">
+        <div className="w-full relative md:-top-20 -top-3">
         <div className="w-full bg-[#EFEFEF] py-12 md:pt-36 md:pb-0 ">
             {/* gradient in left  */}
             <div className="absolute top-24 -left-24 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
@@ -44,7 +44,7 @@ function Logosection() {
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={40}
-                    slidesPerView={2}
+                    slidesPerView={2.5}
                     loop={true}
                     autoplay={{
                         delay: 2500,

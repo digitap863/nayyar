@@ -1,11 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
+import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaPlus } from "react-icons/fa";
 import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
-import ReactQuill from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css';
 import { deleteData, getdata, postForm, putForm } from '../../api/req';
-import EditorToolbar, { formats } from "../../Components/Admin/EditorToolbar";
 import Sidebar from '../../Components/Admin/Sidebar';
 
 const ServiceManagement = () => {
@@ -21,7 +19,7 @@ const ServiceManagement = () => {
     const [editingId, setEditingId] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const quillRef = useRef(null);
+    const editorRef = useRef(null);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -110,44 +108,27 @@ const ServiceManagement = () => {
         setFormData(newFormData);
     };
 
-    const handleQuillChange = (value) => {
-        setFormData({ ...formData, pageContent: value });
+    const handleEditorChange = (content) => {
+        setFormData({ ...formData, pageContent: content });
     };
 
-    const imageHandler = () => {
-        const input = document.createElement('input');
-        input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
-        input.click();
+    // TinyMCE image upload handler
+    const handleImageUpload = (blobInfo, progress) => new Promise((resolve, reject) => {
+        const fd = new FormData();
+        fd.append('image', blobInfo.blob(), blobInfo.filename());
 
-        input.onchange = async () => {
-            if (input.files) {
-                const file = input.files[0];
-                const fd = new FormData();
-                fd.append('image', file);
-
-                try {
-                    const res = await postForm('/upload-editor-image', fd);
-                    if (res.data.success) {
-                        const editor = quillRef.current?.getEditor();
-                        const range = editor?.getSelection();
-                        if (editor && range) {
-                            editor.insertEmbed(range.index, 'image', res.data.url);
-                        }
-                    }
-                } catch (error) {
-                    toast.error('Image upload failed.');
+        postForm('/upload-editor-image', fd)
+            .then(res => {
+                if (res.data.success) {
+                    resolve(res.data.url);
+                } else {
+                    reject('Image upload failed');
                 }
-            }
-        };
-    };
-
-    const modules = useMemo(() => ({
-        toolbar: {
-            container: "#service-toolbar",
-            handlers: { image: imageHandler },
-        },
-    }), []);
+            })
+            .catch(err => {
+                reject('Image upload failed: ' + err.message);
+            });
+    });
 
     const handleFileChange = (e) => {
         const { files } = e.target;
@@ -313,8 +294,8 @@ const ServiceManagement = () => {
                                     key={level}
                                     onClick={() => { setActiveLevel(level); resetForm(); }}
                                     className={`px-4 py-2 rounded-lg font-medium transition ${activeLevel === level
-                                            ? 'bg-[#1D1EE3] text-white'
-                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                        ? 'bg-[#1D1EE3] text-white'
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                         }`}
                                 >
                                     {levelConfig[level].name}
@@ -436,16 +417,30 @@ const ServiceManagement = () => {
                                         {/* Page Content */}
                                         <div className="mt-4">
                                             <label className="block text-gray-700 font-semibold mb-2">Page Content</label>
-                                            <EditorToolbar toolbarId="service-toolbar" />
-                                            <ReactQuill
-                                                ref={quillRef}
-                                                theme="snow"
+                                            <Editor
+                                                apiKey="uje9xr3y9imzxi7do7nycccxugwurfk4objjqkophx7yy154"
+                                                onInit={(evt, editor) => editorRef.current = editor}
                                                 value={formData.pageContent}
-                                                onChange={handleQuillChange}
-                                                modules={modules}
-                                                formats={formats}
-                                                className="bg-white"
-                                                style={{ height: '200px', marginBottom: '50px' }}
+                                                onEditorChange={handleEditorChange}
+                                                init={{
+                                                    height: 400,
+                                                    menubar: true,
+                                                    plugins: [
+                                                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                                        'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                                                    ],
+                                                    toolbar: 'undo redo | blocks | ' +
+                                                        'bold italic forecolor | alignleft aligncenter ' +
+                                                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                        'image media link | removeformat | help',
+                                                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                                                    images_upload_handler: handleImageUpload,
+                                                    automatic_uploads: true,
+                                                    file_picker_types: 'image',
+                                                    promotion: false,
+                                                    branding: false,
+                                                }}
                                             />
                                         </div>
 

@@ -38,7 +38,7 @@ function Mission() {
                         </div>
 
                         {/* Mission Text */}
-                        <div className="border-l-2 border-[#CAFF33] pl-10">
+                        <div className=" pl-10">
                             <h3 className="text-2xl sm:text-3xl font-semibold text-black mb-4">
                                 Miss<span className="text-blablue">ion</span>
                             </h3>
@@ -52,7 +52,7 @@ function Mission() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         {/* Vision Text */}
                         <div className="lg:order-1 order-2">
-                            <div className="border-l-2 border-[#CAFF33] pl-10">
+                            <div className=" pl-10">
                                 <h3 className="text-2xl sm:text-3xl font-semibold text-black mb-4">
                                     <span className="text-blablue">Vis</span>ion
                                 </h3>
