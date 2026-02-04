@@ -22,7 +22,8 @@ function About() {
       <Ceo />
       <Chooseus />
       <Assosiatesection />
-      <Contact />      
+      <Contact />  
+      <Insight />    
     </Layout>
   )
 }

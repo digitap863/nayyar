@@ -23,11 +23,17 @@ function Mission() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         {/* Mission Image */}
                         <div className="relative">
+
+                             <h3 className="md:hidden block   text-2xl font-semibold text-black mb-4">
+                                Miss<span className="text-blablue">ion</span>
+                            </h3>
+
+
                             <div className="relative rounded-3xl overflow-hidden bg-gray-200">
                                 <img
                                     src={missionImage}
                                     alt="Mission - Plant growing on coins"
-                                    className="w-full h-auto object-cover"
+                                    className="w-full md:h-auto h-64 object-cover"
                                 />
                                 
                                 {/* Arrow Icon Button */}
@@ -38,8 +44,8 @@ function Mission() {
                         </div>
 
                         {/* Mission Text */}
-                        <div className=" pl-10">
-                            <h3 className="text-2xl sm:text-3xl font-semibold text-black mb-4">
+                        <div className=" md:pl-10 pl-0">
+                            <h3 className="md:block hidden  md:text-2xl sm:text-3xl font-semibold text-black mb-4">
                                 Miss<span className="text-blablue">ion</span>
                             </h3>
                             <p className="text-gray-700 text-base leading-relaxed">
@@ -52,8 +58,8 @@ function Mission() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         {/* Vision Text */}
                         <div className="lg:order-1 order-2">
-                            <div className=" pl-10">
-                                <h3 className="text-2xl sm:text-3xl font-semibold text-black mb-4">
+                            <div className=" md:pl-10 pl-0">
+                                <h3 className=" md:block hidden text-2xl sm:text-3xl font-semibold text-black mb-4">
                                     <span className="text-blablue">Vis</span>ion
                                 </h3>
                                 <p className="text-gray-700 text-base leading-relaxed">
@@ -63,12 +69,18 @@ function Mission() {
                         </div>
 
                         {/* Vision Image */}
-                        <div className="relative lg:order-2 order-1">
+                        <div className="relative lg:order-2 order-1 relative">
+
+                            <h3 className="md:hidden block   text-2xl font-semibold text-black mb-4">
+                                    <span className="text-blablue">Vis</span>ion
+                                </h3>
+
+                                
                             <div className="relative rounded-3xl overflow-hidden bg-gray-200">
                                 <img
                                     src={visionImage}
                                     alt="Vision - Digital eye technology"
-                                    className="w-full h-auto object-cover"
+                                    className="w-full md:h-auto h-64 object-cover"
                                 />
                                 
                                 {/* Arrow Icon Button */}

@@ -58,7 +58,7 @@ function Success() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-8 md:mb-12">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-black leading-tight">
+                    <h2 className="text-3xl md:text-4xl font-semibold text-black leading-tight">
                         Our Proven Process to
                         <br />
                         Drive Your <span className="text-blablue">Success</span>

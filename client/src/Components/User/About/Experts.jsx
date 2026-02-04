@@ -2,7 +2,9 @@ import { useRef } from 'react'
 import { FaArrowDown, FaArrowLeft, FaArrowRight, FaLinkedin } from "react-icons/fa6"
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/autoplay'
 import { Navigation } from 'swiper/modules'
+import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { default as expert1, default as expert2, default as expert3, default as expert4 } from '../../../assets/images/about/team1.png'
@@ -50,8 +52,8 @@ function Experts() {
     ]
 
     return (
-        <div className="w-full bg-white py-16 sm:py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full bg-white py-16 sm:py-20 overflow-hidden ">
+            <div className="max-w-7xl mx-auto pl-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-12">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-black">
@@ -59,6 +61,7 @@ function Experts() {
                     </h2>
 
                     {/* Navigation Buttons */}
+                    <div className="md:block hidden">
                     <div className="flex gap-3">
                         <button
                             onClick={() => swiperRef.current?.slidePrev()}
@@ -73,15 +76,20 @@ function Experts() {
                             <FaArrowRight className="text-lg" />
                         </button>
                     </div>
+                    </div>
                 </div>
 
                 {/* Experts Carousel */}
                 <Swiper
                     modules={[Navigation]}
-                    spaceBetween={24}
-                    slidesPerView={1}
+                    spaceBetween={16}
+                    slidesPerView={1.25}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper
+                    }}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
                     }}
                     breakpoints={{
                         640: {

@@ -15,18 +15,20 @@ function Ceo() {
                     </h2>
 
                     {/* View All Services Button */}
+                    <div className="md:block hidden">
                     <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
                         <span>View All Services</span>
                         <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
                             <FaArrowDown className="text-blablue rotate-240 font-light w-3 h-3" />
                         </div>
                     </button>
+                    </div>
                 </div>
 
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Side - Quote */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 order-2 lg:order-1">
                         {/* Opening Quote Icon */}
                         <div className="mb-6">
                             <img src={doubleq} alt="" className="w-auto h-auto" />
@@ -67,7 +69,7 @@ function Ceo() {
                     </div>
 
                     {/* Right Side - CEO Image */}
-                    <div className="relative">
+                    <div className="relative order-1 lg:order-2">
                         <div className="relative rounded-3xl overflow-hidden bg-gray-200">
                             <img
                                 src={ceoImage}
