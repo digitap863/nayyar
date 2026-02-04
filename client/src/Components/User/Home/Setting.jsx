@@ -34,7 +34,7 @@ function Setting() {
             image: step4,
             title: 'Apply For Establishment and Get Your Residency Visa',
         },
-           {
+        {
             id: 5,
             image: step1,
             title: 'Select Your Activities & Share Your Documents',
@@ -57,18 +57,19 @@ function Setting() {
     ]
 
     return (
-        <div className="w-full bg-white py-16 sm:py-20">
+        <div className="w-full bg-white py-10 md:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex justify-between items-start mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight">
+                <div className="flex justify-between items-start mb-8 md:mb-12">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-black leading-tight">
                         With Nayyar PRO, Setting Up Your
-                        <br />
+                        <br className="hidden sm:block" />
+                        <span className="sm:hidden"> </span>
                         Business Is <span className="text-blablue">Easy, Quick & Hassle Free</span>
                     </h2>
 
-                    {/* Navigation Buttons */}
-                    <div className="flex gap-3">
+                    {/* Navigation Buttons - Desktop Only */}
+                    <div className="hidden md:flex gap-3">
                         <button
                             onClick={() => swiperRef.current?.slidePrev()}
                             className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
@@ -87,8 +88,8 @@ function Setting() {
                 {/* Steps Carousel */}
                 <Swiper
                     modules={[Navigation]}
-                    spaceBetween={24}
-                    slidesPerView={1}
+                    spaceBetween={16}
+                    slidesPerView={1.15}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper
                     }}
@@ -110,7 +111,7 @@ function Setting() {
                 >
                     {steps.map((step) => (
                         <SwiperSlide key={step.id}>
-                            <div className="relative rounded-xl overflow-hidden bg-white h-[370px] group cursor-pointer">
+                            <div className="relative rounded-xl overflow-hidden bg-white h-[360px]  md:h-[370px] group cursor-pointer">
                                 {/* Image */}
                                 <img
                                     src={step.image}
@@ -119,13 +120,13 @@ function Setting() {
                                 />
 
                                 {/* Arrow Icon Button */}
-                                <div className="absolute top-6 right-6 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                                    <FaArrowDown className='-rotate-120 text-blablue' />
+                                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                    <FaArrowDown className='-rotate-120 text-blablue text-sm sm:text-base' />
                                 </div>
 
                                 {/* Title Overlay */}
-                                <div className="absolute bottom-2 left-2 right-2 bg-white group-hover:bg-[#1D1EE3] group-hover:text-white text-black p-6 rounded-lg transition-all duration-300 ">
-                                    <h3 className="text-base font-semibold leading-tight">
+                                <div className="absolute bottom-2 left-2 right-2 bg-white group-hover:bg-[#1D1EE3] group-hover:text-white text-black p-4 sm:p-6 rounded-lg transition-all duration-300">
+                                    <h3 className="text-sm sm:text-base font-semibold leading-tight">
                                         {step.title}
                                     </h3>
                                 </div>
@@ -133,6 +134,22 @@ function Setting() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                {/* Navigation Buttons - Mobile Only (Bottom Right) */}
+                <div className="flex md:hidden justify-end items-center gap-3 mt-6">
+                    <button
+                        onClick={() => swiperRef.current?.slidePrev()}
+                        className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-[#1D1EE3] hover:text-white transition-all duration-300 text-[#1D1EE3] border border-gray-200"
+                    >
+                        <FaArrowLeft className="text-lg" />
+                    </button>
+                    <button
+                        onClick={() => swiperRef.current?.slideNext()}
+                        className="w-12 h-12 rounded-full bg-[#1D1EE3] shadow-md flex items-center justify-center hover:bg-[#1618C0] transition-all duration-300 text-white"
+                    >
+                        <FaArrowRight className="text-lg" />
+                    </button>
+                </div>
             </div>
         </div>
     )

@@ -46,13 +46,6 @@ function Contact() {
                             className="w-full h-full object-cover"
                         />
 
-                        {/* Colored Squares Overlay */}
-                        <div className="absolute bottom-6 left-6 flex gap-4">
-                            <div className="w-16 h-16 bg-blue-200 rounded-2xl opacity-80"></div>
-                            <div className="w-16 h-16 bg-pink-200 rounded-2xl opacity-80"></div>
-                            <div className="w-16 h-16 bg-yellow-300 rounded-2xl opacity-80"></div>
-                            <div className="w-16 h-16 bg-red-300 rounded-2xl opacity-80"></div>
-                        </div>
                     </div>
 
                     {/* Right Side - Form */}

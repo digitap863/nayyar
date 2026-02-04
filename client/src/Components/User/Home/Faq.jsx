@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FaArrowDown, FaMinus, FaPlus } from "react-icons/fa6"
 
 function Faq() {
-    const [openIndex, setOpenIndex] = useState(1) // Second item open by default
+    const [openIndex, setOpenIndex] = useState(0) // Second item open by default
 
     const faqs = [
         {
@@ -39,11 +39,11 @@ function Faq() {
     return (
         <div className="w-full bg-white py-16 md:pt-20 md:pb-0">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col lg:flex-row gap-20">
+                <div className="flex flex-col lg:flex-row md:gap-20">
                     {/* Left Side - Header and CTA */}
-                    <div className="flex flex-col justify-between min-h-[600px] md:w-[40%] w-full ">
+                    <div className="flex flex-col justify-between md:min-h-[600px] md:w-[40%] w-full ">
                         {/* Title */}
-                        <div className="mb-12 flex-shrink-0">
+                        <div className="md:mb-12 mb-6 flex-shrink-0 ">
                             <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight">
                                 Frequently Asked
                                 <br />
@@ -52,7 +52,7 @@ function Faq() {
                         </div>
 
                         {/* CTA Box - Now in normal flow, pushed to bottom with flex */}
-                        <div className="bg-gray-200 rounded-3xl p-8 mt-auto relative bottom-26">
+                        <div className="bg-gray-200 rounded-3xl p-8 mt-auto relative bottom-26 md:block hidden">
                             <h3 className="text-xl font-semibold text-black mb-3">
                                 Still have a question?
                             </h3>
@@ -78,7 +78,7 @@ function Faq() {
                                 {/* Question */}
                                 <button
                                     onClick={() => toggleFaq(index)}
-                                    className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                                    className="w-full flex items-center justify-between md:p-6 p-4 text-left hover:bg-gray-50 transition-colors"
                                 >
                                     <span className="text-base font-semibold text-black pr-4">
                                         {faq.question}
@@ -106,6 +106,21 @@ function Faq() {
                             </div>
                         ))}
                     </div>
+
+                      <div className="bg-gray-200 rounded-3xl p-8 mt-auto relative top-4 md:hidden block">
+                            <h3 className="text-xl font-semibold text-black mb-3">
+                                Still have a question?
+                            </h3>
+                            <p className="text-gray-600 text-sm mb-6">
+                               Our team is ready to assist you with anything you need.
+                            </p>    
+                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
+                                <span>Make A Call</span>
+                                <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
+                                    <FaArrowDown className="text-blue-600 rotate-[-45deg] font-light w-4 h-4" />
+                                </div>
+                            </button>
+                        </div>
 
                 </div>
             </div>

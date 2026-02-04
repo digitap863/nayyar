@@ -60,21 +60,21 @@ function Testimonials() {
     ]
 
     return (
-        <div className="w-full bg-[#EFEFEF] py-16 sm:py-20 relative ">
+        <div className="w-full bg-[#EFEFEF] py-10 md:py-20 relative">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="absolute top-16 left-0 w-20 h-full bg-[#EFEFEF] blur-lg z-10 "></div>
+                <div className="absolute top-16 left-0 w-20 h-full bg-[#EFEFEF] blur-lg z-10 md:block hidden"></div>
                 <div className="absolute top-16 -right-10 w-28 h-full bg-[#EFEFEF] blur-lg z-10 "></div>
 
 
                 {/* Header */}
-                <div className="flex justify-between items-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-semibold text-black">
+                <div className="flex justify-between items-center mb-8 md:mb-12">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-black">
                         Proven What Our <span className="text-blablue">Client Say</span>
                     </h2>
 
-                    {/* Navigation Buttons */}
-                    <div className="flex gap-3">
+                    {/* Navigation Buttons - Desktop Only */}
+                    <div className="hidden md:flex gap-3">
                         <button
                             onClick={() => swiperRef.current?.slidePrev()}
                             className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
@@ -93,8 +93,8 @@ function Testimonials() {
                 {/* Testimonials Carousel */}
                 <Swiper
                     modules={[Navigation, Autoplay]}
-                    spaceBetween={24}
-                    slidesPerView={1}
+                    spaceBetween={16}
+                    slidesPerView={1.15}
                     loop={true}
                     autoplay={{
                         delay: 3000,
@@ -119,27 +119,27 @@ function Testimonials() {
                         <SwiperSlide key={testimonial.id}>
                             <div className="bg-white rounded-2xl p-8 h-full flex flex-col">
                                 {/* Quote Icon */}
-                                <div className="mb-6">
-                                    <img src={doubleq} alt="" className="w-auto h-auto" />
+                                <div className="mb-4 sm:mb-6">
+                                    <img src={doubleq} alt="" className="w-8 h-8 sm:w-auto sm:h-auto" />
                                 </div>
 
                                 {/* Quote Text */}
-                                <p className="text-gray-700 text-sm leading-relaxed mb-8 flex-grow">
+                                <p className="text-gray-700 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 flex-grow">
                                     {testimonial.quote}
                                 </p>
 
                                 {/* Client Info */}
 
                             </div>
-                            <div className="flex flex-col gap-3 pt-5">
+                            <div className="flex flex-col gap-3 pt-4 sm:pt-5">
                                 <div className="flex items-center gap-3">
                                     <img
                                         src={testimonial.image}
                                         alt={testimonial.name}
-                                        className="w-12 h-12 rounded-full object-cover border border-gray-700"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-gray-700"
                                     />
                                     <div>
-                                        <h4 className="font-semibold text-black text-sm">
+                                        <h4 className="font-semibold text-black text-xs sm:text-sm">
                                             {testimonial.name}
                                         </h4>
                                         <p className="text-gray-500 text-xs">
@@ -152,6 +152,22 @@ function Testimonials() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                {/* Navigation Buttons - Mobile Only (Bottom Right) */}
+                <div className="flex md:hidden justify-end items-center gap-3 mt-6 relative z-10">
+                    <button
+                        onClick={() => swiperRef.current?.slidePrev()}
+                        className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-[#1D1EE3] hover:text-white transition-all duration-300 text-[#1D1EE3] border border-gray-200"
+                    >
+                        <FaArrowLeft className="text-lg" />
+                    </button>
+                    <button
+                        onClick={() => swiperRef.current?.slideNext()}
+                        className="w-12 h-12 rounded-full bg-[#1D1EE3] shadow-md flex items-center justify-center hover:bg-[#1618C0] transition-all duration-300 text-white"
+                    >
+                        <FaArrowRight className="text-lg" />
+                    </button>
+                </div>
             </div>
         </div>
     )

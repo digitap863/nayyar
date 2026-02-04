@@ -40,6 +40,7 @@ function Assosiatesection() {
                     </h2>
 
                     {/* Navigation Buttons */}
+                    <div className="md:block hidden">
                     <div className="flex gap-3">
                         <button
                             onClick={() => swiperRef.current?.slidePrev()}
@@ -54,13 +55,14 @@ function Assosiatesection() {
                             <FaArrowRight className="text-lg" />
                         </button>
                     </div>
+                    </div>
                 </div>
 
                 {/* Logo Swiper */}
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={40}
-                    slidesPerView={2}
+                    slidesPerView={3}
                     loop={true}
                     autoplay={{
                         delay: 2500,

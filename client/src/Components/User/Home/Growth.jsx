@@ -49,12 +49,14 @@ function Growth() {
                     </h2>
 
                     {/* View All Services Button */}
+                    <div className="md:relative absolute top-0 right-0 md:block hidden">
                     <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
                         <span>View All Services</span>
                         <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
                             <FaArrowDown className="text-blablue rotate-240 font-light w-4 h-4" />
                         </div>
                     </button>
+                    </div>
                 </div>
 
                 {/* Content Grid */}
@@ -112,6 +114,18 @@ function Growth() {
                                 <FaArrowDown className='-rotate-120 text-blablue' />
                             </div>
                         </div>
+
+
+                        <div className=" pt-10 block md:hidden">
+                        <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
+                            <span>View All Services</span>
+                            <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
+                                <FaArrowDown className="text-blablue rotate-240 font-light w-4 h-4" />
+                            </div>
+                        </button>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

@@ -13,14 +13,14 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-[#F7F7F4] pt-16 pb-10">
+        <footer className="bg-[#F7F7F4] pt-16 pb-10 md:px-0 px-2">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Top Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     {/* Newsletter Section */}
                     <div className="lg:col-span-2">
                         <h3 className="text-xl font-semibold text-gray-900 mb-4">Newsletter</h3>
-                        <form onSubmit={handleSubscribe} className="relative mb-4 bg-white p-2 rounded-full w-[77%]">
+                        <form onSubmit={handleSubscribe} className="relative mb-4 bg-white p-2 rounded-full md:w-[77%] w-[96%]">
                             <input
                                 type="email"
                                 value={email}
@@ -42,6 +42,8 @@ const Footer = () => {
 
                     {/* Main Pages */}
                     <div className="lg:pl-18">
+                        <div className="flex gap-20">
+                            <div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-4">Main Pages</h3>
                         <ul className="space-y-3">
                             <li>
@@ -65,10 +67,40 @@ const Footer = () => {
                                 </Link>
                             </li>
                         </ul>
+                        </div>
+
+                        <div>
+                            <div className='md:hidden block  '>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-4">Company</h3>
+                                <ul className="space-y-3">
+                                    <li>
+                                        <Link to="/contact" className="text-gray-600 hover:text-blablue transition-colors">
+                                            Contact
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/services" className="text-gray-600 hover:text-blablue transition-colors">
+                                            Services
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/about" className="text-gray-600 hover:text-blablue transition-colors">
+                                            About Us
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/pricing" className="text-gray-600 hover:text-blablue transition-colors">
+                                            Pricing
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
                     </div>
 
                     {/* Company */}
-                    <div>
+                    <div className='md:block hidden '>
                         <h3 className="text-xl font-semibold text-gray-900 mb-4">Company</h3>
                         <ul className="space-y-3">
                             <li>
@@ -122,13 +154,12 @@ const Footer = () => {
             {/* Bottom Blue Section */}
             <div className="bg-blablue text-white py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg">
                 <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-6">
+                    <div className="flex flex-row justify-between items-center gap-4 py-6 mb-10 md:mb-0">
                         {/* Logo and Social Links */}
                         <div className="flex flex-col md:flex-row items-center gap-6 w-full md:w-auto">
                             <Link to="/" className="text-2xl font-bold">
                                 NAYYAR PRO
                             </Link>
-                          
                         </div>
 
                         {/* Right Side Links */}
@@ -158,15 +189,15 @@ const Footer = () => {
                                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
                                     Instagram
                                 </a>
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                                {/* <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
                                     Instagram
-                                </a>
+                                </a> */}
                             </div>
 
                     {/* Copyright for mobile */}
-                    <div className="text-center md:hidden mt-4 text-sm">
-                        © 2025. All rights reserved.
-                    </div>
+                    {/* <div className="text-center md:hidden mt-4 text-sm">
+                        © 2026. All rights reserved.
+                    </div> */}
                 </div>
             </div>
         </footer>
