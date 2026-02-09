@@ -28,7 +28,7 @@ function Contact() {
         <div className="w-full bg-[#EFEFEF] py-16 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="mb-12">
+                <div className="mb-12" data-aos="fade-up">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight">
                         Request a
                         <br />
@@ -39,7 +39,7 @@ function Contact() {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
                     {/* Left Side - Image */}
-                    <div className="relative rounded-3xl overflow-hidden bg-gray-200 h-full min-h-[400px]">
+                    <div className="relative rounded-3xl overflow-hidden bg-gray-200 h-full min-h-[400px]" data-aos="fade-up" data-aos-delay="100">
                         <img
                             src={contactImage}
                             alt="Team consultation"
@@ -49,7 +49,7 @@ function Contact() {
                     </div>
 
                     {/* Right Side - Form */}
-                    <div className="bg-blablue rounded-3xl p-8 sm:p-10 flex flex-col justify-between">
+                    <div className="bg-blablue rounded-3xl p-8 sm:p-10 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="150">
                         {/* Pin Icon */}
                         <div className="mb-8">
                             <div className=" flex items-center justify-start pl-10">

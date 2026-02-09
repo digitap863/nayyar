@@ -7,7 +7,7 @@ const Footer = () => {
 
     const handleSubscribe = (e) => {
         e.preventDefault();
-        // Handle newsletter subscription
+        // Handle newsletter subscription ... .. . 
         console.log('Subscribing email:', email);
         setEmail('');
     };
@@ -18,7 +18,7 @@ const Footer = () => {
                 {/* Top Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     {/* Newsletter Section */}
-                    <div className="lg:col-span-2">
+                    <div className="lg:col-span-2" data-aos="fade-up">
                         <h3 className="text-xl font-semibold text-gray-900 mb-4">Newsletter</h3>
                         <form onSubmit={handleSubscribe} className="relative mb-4 bg-white p-2 rounded-full md:w-[77%] w-[96%]">
                             <input
@@ -41,51 +41,19 @@ const Footer = () => {
                     </div>
 
                     {/* Main Pages */}
-                    <div className="lg:pl-18">
+                    <div className="lg:pl-18" data-aos="fade-up" data-aos-delay="100">
                         <div className="flex gap-20">
                             <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">Main Pages</h3>
-                        <ul className="space-y-3">
-                            <li>
-                                <Link to="/" className="text-gray-600 hover:text-blablue transition-colors">
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/case-study" className="text-gray-600 hover:text-blablue transition-colors">
-                                    Case Study
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/pricing" className="text-gray-600 hover:text-blablue transition-colors">
-                                    Pricing
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/blog" className="text-gray-600 hover:text-blablue transition-colors">
-                                    Blog
-                                </Link>
-                            </li>
-                        </ul>
-                        </div>
-
-                        <div>
-                            <div className='md:hidden block  '>
-                                <h3 className="text-xl font-semibold text-gray-900 mb-4">Company</h3>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-4">Main Pages</h3>
                                 <ul className="space-y-3">
                                     <li>
-                                        <Link to="/contact" className="text-gray-600 hover:text-blablue transition-colors">
-                                            Contact
+                                        <Link to="/" className="text-gray-600 hover:text-blablue transition-colors">
+                                            Home
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="/services" className="text-gray-600 hover:text-blablue transition-colors">
-                                            Services
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/about" className="text-gray-600 hover:text-blablue transition-colors">
-                                            About Us
+                                        <Link to="/case-study" className="text-gray-600 hover:text-blablue transition-colors">
+                                            Case Study
                                         </Link>
                                     </li>
                                     <li>
@@ -93,14 +61,46 @@ const Footer = () => {
                                             Pricing
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link to="/blog" className="text-gray-600 hover:text-blablue transition-colors">
+                                            Blog
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
-                        </div>
+
+                            <div>
+                                <div className='md:hidden block  '>
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Company</h3>
+                                    <ul className="space-y-3">
+                                        <li>
+                                            <Link to="/contact" className="text-gray-600 hover:text-blablue transition-colors">
+                                                Contact
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/services" className="text-gray-600 hover:text-blablue transition-colors">
+                                                Services
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/about" className="text-gray-600 hover:text-blablue transition-colors">
+                                                About Us
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/pricing" className="text-gray-600 hover:text-blablue transition-colors">
+                                                Pricing
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Company */}
-                    <div className='md:block hidden '>
+                    <div className='md:block hidden ' data-aos="fade-up" data-aos-delay="150">
                         <h3 className="text-xl font-semibold text-gray-900 mb-4">Company</h3>
                         <ul className="space-y-3">
                             <li>
@@ -131,7 +131,7 @@ const Footer = () => {
                 </div>
 
                 {/* Contact Info Section */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8" data-aos="fade-up" data-aos-delay="200">
                     <div>
                         <p className="text-sm text-[#03030F] mb-1">Email</p>
                         <a href="mailto:contactnayyar@gmail.com" className="text-[#03030F] hover:text-blablue transition-colors">
@@ -152,7 +152,7 @@ const Footer = () => {
             </div>
 
             {/* Bottom Blue Section */}
-            <div className="bg-blablue text-white py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg">
+            <div className="bg-blablue text-white py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg" data-aos="fade-up" data-aos-delay="250">
                 <div className=" mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-row justify-between items-center gap-4 py-6 mb-10 md:mb-0">
                         {/* Logo and Social Links */}
@@ -176,23 +176,23 @@ const Footer = () => {
 
                     <hr className="my-4" />
 
-                      <div className="flex items-center gap-6">
-                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
-                                    Twitter
-                                </a>
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
-                                    LinkedIn
-                                </a>
-                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
-                                    Facebook
-                                </a>
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
-                                    Instagram
-                                </a>
-                                {/* <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                    <div className="flex items-center gap-6">
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                            Twitter
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                            LinkedIn
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                            Facebook
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                            Instagram
+                        </a>
+                        {/* <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
                                     Instagram
                                 </a> */}
-                            </div>
+                    </div>
 
                     {/* Copyright for mobile */}
                     {/* <div className="text-center md:hidden mt-4 text-sm">

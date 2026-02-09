@@ -9,6 +9,7 @@ import Ceo from '../../Components/User/About/Ceo.jsx';
 import Chooseus from '../../Components/User/About/Chooseus.jsx';
 import Assosiatesection from '../../Components/User/Home/Assosiatesection.jsx';
 import Contact from "../../Components/User/Home/Contact.jsx";
+import Insight from "../../Components/User/Home/Insight.jsx";
 
 function About() {
   return (

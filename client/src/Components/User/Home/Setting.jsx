@@ -60,7 +60,7 @@ function Setting() {
         <div className="w-full bg-white py-10 md:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex justify-between items-start mb-8 md:mb-12">
+                <div className="flex justify-between items-start mb-8 md:mb-12" data-aos="fade-up">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-black leading-tight">
                         With Nayyar PRO, Setting Up Your
                         <br className="hidden sm:block" />
@@ -86,54 +86,56 @@ function Setting() {
                 </div>
 
                 {/* Steps Carousel */}
-                <Swiper
-                    modules={[Navigation]}
-                    spaceBetween={16}
-                    slidesPerView={1.15}
-                    onSwiper={(swiper) => {
-                        swiperRef.current = swiper
-                    }}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 24,
-                        },
-                        1024: {
-                            slidesPerView: 4,
-                            spaceBetween: 24,
-                        },
-                    }}
-                    className="steps-swiper"
-                >
-                    {steps.map((step) => (
-                        <SwiperSlide key={step.id}>
-                            <div className="relative rounded-xl overflow-hidden bg-white h-[360px]  md:h-[370px] group cursor-pointer">
-                                {/* Image */}
-                                <img
-                                    src={step.image}
-                                    alt={step.title}
-                                    className="w-full h-full object-cover"
-                                />
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <Swiper
+                        modules={[Navigation]}
+                        spaceBetween={16}
+                        slidesPerView={1.15}
+                        onSwiper={(swiper) => {
+                            swiperRef.current = swiper
+                        }}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 24,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 24,
+                            },
+                        }}
+                        className="steps-swiper"
+                    >
+                        {steps.map((step) => (
+                            <SwiperSlide key={step.id}>
+                                <div className="relative rounded-xl overflow-hidden bg-white h-[360px]  md:h-[370px] group cursor-pointer">
+                                    {/* Image */}
+                                    <img
+                                        src={step.image}
+                                        alt={step.title}
+                                        className="w-full h-full object-cover"
+                                    />
 
-                                {/* Arrow Icon Button */}
-                                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                                    <FaArrowDown className='-rotate-120 text-blablue text-sm sm:text-base' />
-                                </div>
+                                    {/* Arrow Icon Button */}
+                                    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                        <FaArrowDown className='-rotate-120 text-blablue text-sm sm:text-base' />
+                                    </div>
 
-                                {/* Title Overlay */}
-                                <div className="absolute bottom-2 left-2 right-2 bg-white group-hover:bg-[#1D1EE3] group-hover:text-white text-black p-4 sm:p-6 rounded-lg transition-all duration-300">
-                                    <h3 className="text-sm sm:text-base font-semibold leading-tight">
-                                        {step.title}
-                                    </h3>
+                                    {/* Title Overlay */}
+                                    <div className="absolute bottom-2 left-2 right-2 bg-white group-hover:bg-[#1D1EE3] group-hover:text-white text-black p-4 sm:p-6 rounded-lg transition-all duration-300">
+                                        <h3 className="text-sm sm:text-base font-semibold leading-tight">
+                                            {step.title}
+                                        </h3>
+                                    </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
 
                 {/* Navigation Buttons - Mobile Only (Bottom Right) */}
                 <div className="flex md:hidden justify-end items-center gap-3 mt-6">

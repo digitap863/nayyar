@@ -80,7 +80,7 @@ function Insight() {
         <div className="w-full bg-white py-16 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 lg:mb-12">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 lg:mb-12" data-aos="fade-up">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-black leading-tight">
                         Strategic Insights That
                         <br />
@@ -97,7 +97,7 @@ function Insight() {
                 </div>
 
                 {/* Desktop Blog Grid - Hidden on mobile */}
-                <div className="hidden lg:grid grid-cols-4 gap-8">
+                <div className="hidden lg:grid grid-cols-4 gap-8" data-aos="fade-up" data-aos-delay="100">
                     {blogs.map((blog) => (
                         <BlogCard key={blog.id} blog={blog} />
                     ))}

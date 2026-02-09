@@ -16,7 +16,7 @@ function Experience() {
         <div className="w-full bg-[#EFEFEF] py-12 sm:py-16 lg:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-start gap-4 mb-8 lg:mb-12">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-start gap-4 mb-8 lg:mb-12" data-aos="fade-up">
                     <h2 className=" text-3xl lg:text-4xl font-semibold text-black leading-tight">
                         Where Experience
                         <br />
@@ -30,7 +30,7 @@ function Experience() {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-16 gap-8 items-center">
                     {/* Left Side - Text Content */}
-                    <div className="space-y-4 sm:space-y-6 order-2 lg:order-1">
+                    <div className="space-y-4 sm:space-y-6 order-2 lg:order-1" data-aos="fade-up" data-aos-delay="100">
                         <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                             NAYYAR for Documents Clearing is a trusted Dubai-based government and legal documentation service provider, established in 2018. Located in Al Muteena, Dubai, we specialize in delivering fast, reliable, and transparent document clearing and PRO solutions for individuals and businesses across the UAE.
                         </p>
@@ -41,7 +41,7 @@ function Experience() {
                     </div>
 
                     {/* Right Side - Image */}
-                    <div className="relative order-1 lg:order-2">
+                    <div className="relative order-1 lg:order-2" data-aos="fade-up" data-aos-delay="150">
                         <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gray-200">
                             <img
                                 src={experienceImage}

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa6";
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,8 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import si1 from "../../../assets/images/home/si1.svg";
 import si2 from "../../../assets/images/home/si2.svg";
 import si3 from "../../../assets/images/home/si3.svg";
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
 
 function Success() {
     const swiperRef = useRef(null);
@@ -57,7 +56,7 @@ function Success() {
         <div className="w-full bg-[#EFEFEF] py-10 md:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex justify-between items-start mb-8 md:mb-12">
+                <div className="flex justify-between items-start mb-8 md:mb-12" data-aos="fade-up">
                     <h2 className="text-3xl md:text-4xl font-semibold text-black leading-tight">
                         Our Proven Process to
                         <br />
@@ -71,7 +70,7 @@ function Success() {
                 </div>
 
                 {/* Desktop Grid - Hidden on mobile */}
-                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
                     {processes.map((process) => (
                         <ProcessCard key={process.id} process={process} />
                     ))}

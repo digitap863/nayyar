@@ -23,63 +23,63 @@ function Logosection() {
 
     return (
         <div className="w-full relative md:-top-20 -top-3">
-        <div className="w-full bg-[#EFEFEF] py-12 md:pt-36 md:pb-0 ">
-            {/* gradient in left  */}
-            <div className="absolute top-24 -left-24 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
-            <div className="absolute top-24 -right-24 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
+            <div className="w-full bg-[#EFEFEF] py-12 md:pt-36 md:pb-0 ">
+                {/* gradient in left  */}
+                <div className="absolute top-24 -left-24 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
+                <div className="absolute top-24 -right-24 w-1/4 h-full bg-gradient-to-r from-[#EFEFEF] to-[#EFEFEF] z-10 blur-3xl  rounded-full"></div>
 
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Heading */}
-                <div className="text-center mb-10">
-                    <h2 className="text-2xl sm:text-3xl font-base text-black mb-1">
-                        Already Chosen By
-                    </h2>
-                    <p className="text-2xl sm:text-3xl font-semibold text-blablue">
-                        The Leaders
-                    </p>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Heading */}
+                    <div className="text-center mb-10" data-aos="fade-up">
+                        <h2 className="text-2xl sm:text-3xl font-base text-black mb-1">
+                            Already Chosen By
+                        </h2>
+                        <p className="text-2xl sm:text-3xl font-semibold text-blablue">
+                            The Leaders
+                        </p>
+                    </div>
+
+                    {/* Logo Swiper */}
+                    <Swiper
+                        modules={[Autoplay]}
+                        spaceBetween={40}
+                        slidesPerView={2.5}
+                        loop={true}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 3,
+                                spaceBetween: 50,
+                            },
+                            768: {
+                                slidesPerView: 4,
+                                spaceBetween: 60,
+                            },
+                            1024: {
+                                slidesPerView: 6,
+                                spaceBetween: 60,
+                            },
+                        }}
+                        className="logo-swiper"
+                    >
+                        {logos.map((logo) => (
+                            <SwiperSlide key={logo.id}>
+                                <div className="flex items-center justify-center h-20 sm:h-24">
+                                    <img
+                                        src={logo.src}
+                                        alt={logo.alt}
+                                        className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-60 hover:opacity-100"
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
-
-                {/* Logo Swiper */}
-                <Swiper
-                    modules={[Autoplay]}
-                    spaceBetween={40}
-                    slidesPerView={2.5}
-                    loop={true}
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 3,
-                            spaceBetween: 50,
-                        },
-                        768: {
-                            slidesPerView: 4,
-                            spaceBetween: 60,
-                        },
-                        1024: {
-                            slidesPerView: 6,
-                            spaceBetween: 60,
-                        },
-                    }}
-                    className="logo-swiper"
-                >
-                    {logos.map((logo) => (
-                        <SwiperSlide key={logo.id}>
-                            <div className="flex items-center justify-center h-20 sm:h-24">
-                                <img
-                                    src={logo.src}
-                                    alt={logo.alt}
-                                    className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-60 hover:opacity-100"
-                                />
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
             </div>
-        </div>
         </div>
     )
 }

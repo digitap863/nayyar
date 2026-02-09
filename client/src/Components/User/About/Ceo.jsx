@@ -1,6 +1,6 @@
 import { FaArrowDown } from "react-icons/fa6"
-import ceoImage from '../../../assets/images/about/ceoo.png'
 import ceoProfile from '../../../assets/images/about/ceoi.png'
+import ceoImage from '../../../assets/images/about/ceoo.png'
 import doubleq from '../../../assets/images/home/doubleq.png'
 
 
@@ -9,26 +9,26 @@ function Ceo() {
         <div className="w-full bg-[#EFEFEF] py-16 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex justify-between items-center mb-12">
+                <div className="flex justify-between items-center mb-12" data-aos="fade-up">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-black">
                         Words from our <span className="text-blablue">CEO</span>
                     </h2>
 
                     {/* View All Services Button */}
                     <div className="md:block hidden">
-                    <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
-                        <span>View All Services</span>
-                        <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
-                            <FaArrowDown className="text-blablue rotate-240 font-light w-3 h-3" />
-                        </div>
-                    </button>
+                        <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
+                            <span>View All Services</span>
+                            <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
+                                <FaArrowDown className="text-blablue rotate-240 font-light w-3 h-3" />
+                            </div>
+                        </button>
                     </div>
                 </div>
 
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Side - Quote */}
-                    <div className="space-y-6 order-2 lg:order-1">
+                    <div className="space-y-6 order-2 lg:order-1" data-aos="fade-up" data-aos-delay="100">
                         {/* Opening Quote Icon */}
                         <div className="mb-6">
                             <img src={doubleq} alt="" className="w-auto h-auto" />
@@ -69,7 +69,7 @@ function Ceo() {
                     </div>
 
                     {/* Right Side - CEO Image */}
-                    <div className="relative order-1 lg:order-2">
+                    <div className="relative order-1 lg:order-2" data-aos="fade-up" data-aos-delay="150">
                         <div className="relative rounded-3xl overflow-hidden bg-gray-200">
                             <img
                                 src={ceoImage}

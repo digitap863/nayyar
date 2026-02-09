@@ -5,8 +5,8 @@ import 'swiper/css/navigation'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-function Servicesection() {
-    const [expandedLocations, setExpandedLocations] = useState({})
+function Servicetwo() {
+ const [expandedLocations, setExpandedLocations] = useState({})
     const businessSwiperRef = useRef(null)
     const visaSwiperRef = useRef(null)
 
@@ -137,43 +137,10 @@ function Servicesection() {
         </div>
     )
 
-    // Reusable Service Card Component for Visa Services
-    const VisaServiceCard = ({ service }) => (
-        <div className="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow h-full">
-            {/* Icon */}
-            <div className="mb-4">
-                {service.icon}
-            </div>
-
-            {/* Title */}
-            <h3 className="text-xl font-semibold text-black mb-3">
-                {service.title}
-            </h3>
-
-            {/* Description */}
-            <p className="text-gray-600 text-sm mb-6">
-                {service.description}
-            </p>
-
-            {/* Read More Button */}
-            <div className="flex items-center gap-2">
-                <span className="text-black text-sm font-medium">Read More</span>
-                <button className="bg-blablue hover:bg-blue-700 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all hover:scale-105">
-                    <FaArrowRight className="text-sm" />
-                </button>
-            </div>
-        </div>
-    )
-
     return (
         <div className="w-full bg-[#EFEFEF] py-16 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Business Setup Services Section */}
                 <div className="mb-20">
-                    <h2 className="text-3xl sm:text-4xl font-semibold text-black mb-12" data-aos="fade-up">
-                        Business Setup Services
-                    </h2>
-
                     {/* Desktop Grid - Hidden on mobile */}
                     <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
                         {businessSetupServices.map((service) => (
@@ -216,58 +183,9 @@ function Servicesection() {
                         </div>
                     </div>
                 </div>
-
-                {/* Visa Services Section */}
-                <div>
-                    <h2 className="text-3xl sm:text-4xl font-semibold text-black mb-12" data-aos="fade-up">
-                        Visa Services
-                    </h2>
-
-                    {/* Desktop Grid - Hidden on mobile */}
-                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
-                        {visaServices.map((service) => (
-                            <VisaServiceCard key={service.id} service={service} />
-                        ))}
-                    </div>
-
-                    {/* Mobile Swiper - Hidden on desktop */}
-                    <div className="md:hidden" data-aos="fade-up" data-aos-delay="100">
-                        <Swiper
-                            modules={[Navigation]}
-                            spaceBetween={16}
-                            slidesPerView={1.15}
-                            onSwiper={(swiper) => {
-                                visaSwiperRef.current = swiper
-                            }}
-                            className="services-swiper"
-                        >
-                            {visaServices.map((service) => (
-                                <SwiperSlide key={service.id}>
-                                    <VisaServiceCard service={service} />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-
-                        {/* Navigation Buttons - Mobile */}
-                        <div className="flex justify-end items-center gap-3 mt-6">
-                            <button
-                                onClick={() => visaSwiperRef.current?.slidePrev()}
-                                className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-blablue hover:text-white transition-all duration-300 text-blablue border border-gray-200"
-                            >
-                                <FaArrowLeft className="text-base" />
-                            </button>
-                            <button
-                                onClick={() => visaSwiperRef.current?.slideNext()}
-                                className="w-10 h-10 rounded-full bg-blablue shadow-md flex items-center justify-center hover:bg-blue-700 transition-all duration-300 text-white"
-                            >
-                                <FaArrowRight className="text-base" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     )
 }
 
-export default Servicesection
+export default Servicetwo

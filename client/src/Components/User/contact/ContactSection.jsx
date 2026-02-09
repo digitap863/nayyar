@@ -22,69 +22,69 @@ function ContactSection() {
     }
 
     return (
-        <div className="w-full bg-white py-16 sm:py-20">
+        <div className="w-full bg-white py-10 sm:py-16 md:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                     {/* Left Side - Contact Info */}
                     <div>
                         {/* Header */}
-                        <div className="mb-12">
+                        <div className="mb-8 md:mb-12" data-aos="fade-up">
                             <div className="mb-2">
-                                <span className="text-sm font-medium text-blablue">
+                                <span className="text-xs sm:text-sm font-medium text-blablue">
                                     [Contact]
                                 </span>
                             </div>
-                            <h2 className="text-4xl sm:text-5xl font-semibold text-black mb-4">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-black mb-3 md:mb-4">
                                 Drop Us a <span className="text-blablue">Message</span>
                             </h2>
-                            <p className="text-gray-700 text-base">
+                            <p className="text-gray-700 text-sm sm:text-base">
                                 We're always happy to hear from you and will get back to you as soon as possible.
                             </p>
                         </div>
 
                         {/* Contact Details */}
-                        <div className="space-y-6">
+                        <div className="space-y-4 sm:space-y-6" data-aos="fade-up" data-aos-delay="100">
                             {/* Email */}
-                            <div className="flex items-start gap-4">
-                                <div className="bg-[#EAEAFF] bg-opacity-10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-                                    <FaEnvelope className="text-blablue text-lg" />
+                            <div className="flex items-start gap-3 sm:gap-4">
+                                <div className="bg-[#EAEAFF] bg-opacity-10 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
+                                    <FaEnvelope className="text-blablue text-base sm:text-lg" />
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-medium text-gray-600 ">
+                                    <h3 className="text-xs sm:text-sm font-medium text-gray-600">
                                         Email
                                     </h3>
-                                    <p className="text-lg font-semibold text-black">
+                                    <p className="text-base sm:text-lg font-semibold text-black break-all">
                                         nayyarprouae@gmail.com
                                     </p>
                                 </div>
                             </div>
 
                             {/* Call */}
-                            <div className="flex items-start gap-4">
-                                <div className="bg-[#EAEAFF] bg-opacity-10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-                                    <FaPhone className="text-blablue text-lg" />
+                            <div className="flex items-start gap-3 sm:gap-4">
+                                <div className="bg-[#EAEAFF] bg-opacity-10 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
+                                    <FaPhone className="text-blablue text-base sm:text-lg" />
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-medium text-gray-600 ">
+                                    <h3 className="text-xs sm:text-sm font-medium text-gray-600">
                                         Call
                                     </h3>
-                                    <p className="text-lg font-semibold text-black">
+                                    <p className="text-base sm:text-lg font-semibold text-black">
                                         +99 1234 5478
                                     </p>
                                 </div>
                             </div>
 
                             {/* Visit Us */}
-                            <div className="flex items-start gap-4">
-                                <div className="bg-[#EAEAFF] bg-opacity-10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-                                    <FaMapMarkerAlt className="text-blablue text-lg" />
+                            <div className="flex items-start gap-3 sm:gap-4">
+                                <div className="bg-[#EAEAFF] bg-opacity-10 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
+                                    <FaMapMarkerAlt className="text-blablue text-base sm:text-lg" />
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-medium text-gray-600 ">
+                                    <h3 className="text-xs sm:text-sm font-medium text-gray-600">
                                         Visit Us
                                     </h3>
-                                    <p className="text-lg font-semibold text-black">
+                                    <p className="text-base sm:text-lg font-semibold text-black">
                                         See on Google Map
                                     </p>
                                 </div>
@@ -93,7 +93,7 @@ function ContactSection() {
                     </div>
 
                     {/* Right Side - Contact Form */}
-                    <div className="bg-[#EFEFEF] rounded-3xl p-6">
+                    <div className="bg-[#EFEFEF] rounded-2xl sm:rounded-3xl p-5 sm:p-6" data-aos="fade-up" data-aos-delay="150">
                         <form onSubmit={handleSubmit} className="space-y-4">
                             {/* Full Name */}
                             <div>

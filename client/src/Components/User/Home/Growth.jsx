@@ -41,7 +41,7 @@ function Growth() {
         <div className="w-full bg-white py-16 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex justify-between items-start mb-12">
+                <div className="flex justify-between items-start mb-12" data-aos="fade-up">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight">
                         Driving Growth Through
                         <br />
@@ -50,12 +50,12 @@ function Growth() {
 
                     {/* View All Services Button */}
                     <div className="md:relative absolute top-0 right-0 md:block hidden">
-                    <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
-                        <span>View All Services</span>
-                        <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
-                            <FaArrowDown className="text-blablue rotate-240 font-light w-4 h-4" />
-                        </div>
-                    </button>
+                        <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
+                            <span>View All Services</span>
+                            <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
+                                <FaArrowDown className="text-blablue rotate-240 font-light w-4 h-4" />
+                            </div>
+                        </button>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@ function Growth() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left Side - Services List */}
-                    <div className="space-y-5 border-t border-t-gray-200 pt-4">
+                    <div className="space-y-5 border-t border-t-gray-200 pt-4" data-aos="fade-up" data-aos-delay="100">
                         {services.map((service, index) => (
                             <div
                                 key={service.id}
@@ -101,7 +101,7 @@ function Growth() {
                     </div>
 
                     {/* Right Side - Service Image */}
-                    <div className="relative">
+                    <div className="relative" data-aos="fade-up" data-aos-delay="150">
                         <div className="relative rounded-3xl overflow-hidden bg-gray-200 h-[450px]">
                             <img
                                 src={services[activeService].image}
@@ -117,12 +117,12 @@ function Growth() {
 
 
                         <div className=" pt-10 block md:hidden">
-                        <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
-                            <span>View All Services</span>
-                            <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
-                                <FaArrowDown className="text-blablue rotate-240 font-light w-4 h-4" />
-                            </div>
-                        </button>
+                            <button className="bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
+                                <span>View All Services</span>
+                                <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
+                                    <FaArrowDown className="text-blablue rotate-240 font-light w-4 h-4" />
+                                </div>
+                            </button>
                         </div>
 
 

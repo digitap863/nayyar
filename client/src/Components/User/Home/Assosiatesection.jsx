@@ -1,15 +1,15 @@
-import 'swiper/css'
 import { useRef } from 'react'
-import { Autoplay, Navigation } from 'swiper/modules'
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6"
+import 'swiper/css'
+import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import logo1 from '../../../assets/images/home/logo1.svg'
 import logo2 from '../../../assets/images/home/logo2.svg'
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6"
 
 
 function Assosiatesection() {
     const swiperRef = useRef(null)
-    
+
     const logos = [
         { id: 1, src: logo1, alt: 'Headspace' },
         { id: 2, src: logo2, alt: 'Shopify' },
@@ -34,27 +34,27 @@ function Assosiatesection() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Heading */}
-                 <div className="flex justify-between items-center mb-12">
+                <div className="flex justify-between items-center mb-12" data-aos="fade-up">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-black">
-                        Our Partners <br/> & <span className="text-blablue">  Associates In Uae </span>
+                        Our Partners <br /> & <span className="text-blablue">  Associates In Uae </span>
                     </h2>
 
                     {/* Navigation Buttons */}
                     <div className="md:block hidden">
-                    <div className="flex gap-3">
-                        <button
-                            onClick={() => swiperRef.current?.slidePrev()}
-                            className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
-                        >
-                            <FaArrowLeft className="text-lg" />
-                        </button>
-                        <button
-                            onClick={() => swiperRef.current?.slideNext()}
-                            className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
-                        >
-                            <FaArrowRight className="text-lg" />
-                        </button>
-                    </div>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => swiperRef.current?.slidePrev()}
+                                className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
+                            >
+                                <FaArrowLeft className="text-lg" />
+                            </button>
+                            <button
+                                onClick={() => swiperRef.current?.slideNext()}
+                                className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
+                            >
+                                <FaArrowRight className="text-lg" />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@ function Assosiatesection() {
                         delay: 2500,
                         disableOnInteraction: false,
                     }}
-                     onSwiper={(swiper) => {
+                    onSwiper={(swiper) => {
                         swiperRef.current = swiper
                     }}
                     breakpoints={{

@@ -1,17 +1,19 @@
+
 import Layout from "./Layout/Layout.jsx";
 import Banner from '../../Components/User/Services/Banner.jsx';
-import Servicesection from '../../Components/User/Services/Servicesection.jsx';
+import Servicetwo from '../../Components/User/Services/Servicetwo.jsx';
 import Insight from "../../Components/User/Home/Insight.jsx";
 
 
-function Services() {
+function ServiceDetail() {
   return (
     <Layout>
       <Banner />  
-      <Servicesection />
+      <Servicetwo />
       <Insight />
+      
     </Layout>
   )
 }
 
-export default Services  
+export default ServiceDetail  

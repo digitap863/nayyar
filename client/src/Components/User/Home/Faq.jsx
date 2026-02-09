@@ -37,14 +37,14 @@ function Faq() {
     }
 
     return (
-        <div className="w-full bg-white py-16 md:pt-20 md:pb-0">
+        <div className="w-full bg-white py-10 md:pt-20 md:pb-0">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col lg:flex-row md:gap-20">
+                <div className="flex flex-col lg:flex-row gap-6 md:gap-20">
                     {/* Left Side - Header and CTA */}
-                    <div className="flex flex-col justify-between md:min-h-[600px] md:w-[40%] w-full ">
+                    <div className="flex flex-col justify-between md:min-h-[600px] md:w-[40%] w-full">
                         {/* Title */}
-                        <div className="md:mb-12 mb-6 flex-shrink-0 ">
-                            <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight">
+                        <div className="md:mb-12 mb-4 flex-shrink-0" data-aos="fade-up">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-black leading-tight">
                                 Frequently Asked
                                 <br />
                                 <span className="text-blue-600">Questions.</span>
@@ -57,10 +57,10 @@ function Faq() {
                                 Still have a question?
                             </h3>
                             <p className="text-gray-600 text-sm mb-6">
-                               Our team is ready to assist you with anything you need.
-                            </p>    
+                                Our team is ready to assist you with anything you need.
+                            </p>
                             <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
-                                <span>Make A Call</span>
+                                <span>Send a </span>
                                 <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
                                     <FaArrowDown className="text-blue-600 rotate-[-45deg] font-light w-4 h-4" />
                                 </div>
@@ -69,7 +69,7 @@ function Faq() {
                     </div>
 
                     {/* Right Side - FAQ Accordion */}
-                    <div className="md:w-[60%] w-full">
+                    <div className="md:w-[60%] w-full" data-aos="fade-up" data-aos-delay="100">
                         {faqs.map((faq, index) => (
                             <div
                                 key={faq.id}
@@ -78,16 +78,16 @@ function Faq() {
                                 {/* Question */}
                                 <button
                                     onClick={() => toggleFaq(index)}
-                                    className="w-full flex items-center justify-between md:p-6 p-4 text-left hover:bg-gray-50 transition-colors"
+                                    className="w-full flex items-center justify-between md:p-6 p-3 text-left hover:bg-gray-50 transition-colors"
                                 >
-                                    <span className="text-base font-semibold text-black pr-4">
+                                    <span className="text-sm sm:text-base font-semibold text-black pr-3 sm:pr-4">
                                         {faq.question}
                                     </span>
-                                    <div className="flex-shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                                    <div className="flex-shrink-0 bg-blue-600 text-white rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
                                         {openIndex === index ? (
-                                            <FaMinus className="text-sm" />
+                                            <FaMinus className="text-xs sm:text-sm" />
                                         ) : (
-                                            <FaPlus className="text-sm" />
+                                            <FaPlus className="text-xs sm:text-sm" />
                                         )}
                                     </div>
                                 </button>
@@ -97,8 +97,8 @@ function Faq() {
                                     className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                                         }`}
                                 >
-                                    <div className="px-6 pb-6">
-                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                    <div className="px-4 pb-4 sm:px-6 sm:pb-6">
+                                        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                                             {faq.answer}
                                         </p>
                                     </div>
@@ -107,20 +107,20 @@ function Faq() {
                         ))}
                     </div>
 
-                      <div className="bg-gray-200 rounded-3xl p-8 mt-auto relative top-4 md:hidden block">
-                            <h3 className="text-xl font-semibold text-black mb-3">
-                                Still have a question?
-                            </h3>
-                            <p className="text-gray-600 text-sm mb-6">
-                               Our team is ready to assist you with anything you need.
-                            </p>    
-                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 pl-8 pr-16 rounded-full transition-all flex items-center gap-3 group relative">
-                                <span>Make A Call</span>
-                                <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
-                                    <FaArrowDown className="text-blue-600 rotate-[-45deg] font-light w-4 h-4" />
-                                </div>
-                            </button>
-                        </div>
+                    <div className="bg-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 mt-6 md:hidden block">
+                        <h3 className="text-lg sm:text-xl font-semibold text-black mb-2 sm:mb-3">
+                            Still have a question?
+                        </h3>
+                        <p className="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6">
+                            Our team is ready to assist you with anything you need.
+                        </p>
+                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 sm:py-3 pl-6 sm:pl-8 pr-14 sm:pr-16 rounded-full transition-all flex items-center gap-3 group relative text-sm sm:text-base">
+                            <span>Make A Call</span>
+                            <div className="bg-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
+                                <FaArrowDown className="text-blue-600 rotate-[-45deg] font-light w-3 h-3 sm:w-4 sm:h-4" />
+                            </div>
+                        </button>
+                    </div>
 
                 </div>
             </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaArrowDown } from "react-icons/fa6"
 import missionImage from '../../../assets/images/about/mission.svg'
 import visionImage from '../../../assets/images/about/vission.svg'
@@ -8,7 +7,7 @@ function Mission() {
         <div className="w-full bg-white py-16 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="mb-8">
+                <div className="mb-8" data-aos="fade-up">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-black mb-4">
                         Mission & <span className="text-blablue">Vision</span>
                     </h2>
@@ -20,11 +19,11 @@ function Mission() {
                 {/* Mission and Vision Cards */}
                 <div className="space-y-12 mt-12">
                     {/* Mission Card */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="100">
                         {/* Mission Image */}
                         <div className="relative">
 
-                             <h3 className="md:hidden block   text-2xl font-semibold text-black mb-4">
+                            <h3 className="md:hidden block   text-2xl font-semibold text-black mb-4">
                                 Miss<span className="text-blablue">ion</span>
                             </h3>
 
@@ -35,7 +34,7 @@ function Mission() {
                                     alt="Mission - Plant growing on coins"
                                     className="w-full md:h-auto h-64 object-cover"
                                 />
-                                
+
                                 {/* Arrow Icon Button */}
                                 <div className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform">
                                     <FaArrowDown className='-rotate-120 text-blablue' />
@@ -55,7 +54,7 @@ function Mission() {
                     </div>
 
                     {/* Vision Card */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="150">
                         {/* Vision Text */}
                         <div className="lg:order-1 order-2">
                             <div className=" md:pl-10 pl-0">
@@ -72,17 +71,17 @@ function Mission() {
                         <div className="relative lg:order-2 order-1 relative">
 
                             <h3 className="md:hidden block   text-2xl font-semibold text-black mb-4">
-                                    <span className="text-blablue">Vis</span>ion
-                                </h3>
+                                <span className="text-blablue">Vis</span>ion
+                            </h3>
 
-                                
+
                             <div className="relative rounded-3xl overflow-hidden bg-gray-200">
                                 <img
                                     src={visionImage}
                                     alt="Vision - Digital eye technology"
                                     className="w-full md:h-auto h-64 object-cover"
                                 />
-                                
+
                                 {/* Arrow Icon Button */}
                                 <div className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform">
                                     <FaArrowDown className='-rotate-120 text-blablue' />

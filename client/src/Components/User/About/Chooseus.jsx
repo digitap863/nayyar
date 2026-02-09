@@ -133,7 +133,7 @@ function Success() {
         <div className="w-full bg-[#EFEFEF] py-12 sm:py-16 lg:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="flex justify-between items-start mb-8 md:mb-12">
+                <div className="flex justify-between items-start mb-8 md:mb-12" data-aos="fade-up">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-black leading-tight">
                         Why Should you <span className="text-blablue">Choose Us</span>?
                     </h2>
@@ -145,7 +145,7 @@ function Success() {
                 </div>
 
                 {/* Desktop Process Cards Grid - Hidden on mobile */}
-                <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
                     {processes.map((process) => (
                         <ProcessCard key={process.id} process={process} />
                     ))}

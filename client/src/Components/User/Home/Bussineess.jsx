@@ -16,7 +16,7 @@ function Bussineess() {
         <div className="w-full bg-[#EFEFEF] py-10 md:py-20 bg-[#EFEFEF]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Heading */}
-                <div className="mb-8 md:mb-12 flex flex-col md:flex-row gap-6 md:gap-32">
+                <div className="mb-8 md:mb-12 flex flex-col md:flex-row gap-6 md:gap-32" data-aos="fade-up">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight md:w-[60%] w-full">
                         Empowering businesses with seamless
                         <br className="hidden sm:block" />
@@ -31,7 +31,7 @@ function Bussineess() {
                 {/* Content Grid */}
                 <div className="flex flex-col lg:flex-row w-full gap-6 lg:gap-10 items-start">
                     {/* Left Side - Image Card */}
-                    <div className="relative lg:w-[65%] w-full">
+                    <div className="relative lg:w-[65%] w-full" data-aos="fade-up" data-aos-delay="100">
                         <div className="relative rounded-3xl overflow-hidden bg-gray-200">
                             <img
                                 src={businessImage}
@@ -53,7 +53,7 @@ function Bussineess() {
                     </div>
 
                     {/* Right Side - Services List */}
-                    <div className="flex flex-col justify-between bg-white lg:w-[35%] w-full p-4 sm:p-5 rounded-2xl">
+                    <div className="flex flex-col justify-between bg-white lg:w-[35%] w-full p-4 sm:p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
 
                         {/* Services List */}
                         <div className="space-y-0 mb-6 sm:mb-8">

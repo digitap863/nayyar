@@ -30,7 +30,8 @@ const EditBlog = lazy(() => import("../Pages/Admin/EditBlog.jsx"));
 const TeamList = lazy(() => import("../Pages/Admin/TeamList.jsx"));
 const AddTeam = lazy(() => import("../Pages/Admin/AddTeam.jsx"));
 const EditTeam = lazy(() => import("../Pages/Admin/EditTeam.jsx"));
-
+const ServiceDetail = lazy(() => import("../Pages/User/ServiceDetail.jsx"));
+const ServiceDetailed = lazy(() => import("../Pages/User/ServiceDetailed.jsx"));
 
 // const Dashboard = lazy(() => import("../Pages/Admin/Dashboard.jsx"))
 // const ServiceForm = lazy(() => import("../Pages/Admin/AdminService.jsx"))
@@ -49,6 +50,8 @@ function MainRouter() {
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/blog/:id' element={<BlogDetail />} />
         <Route path='/services' element={<Services />} />
+        <Route path='/service/:id' element={<ServiceDetail />} />
+        <Route path='/service/:id/:slug' element={<ServiceDetailed />} />
 
 
 
