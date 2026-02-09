@@ -2,6 +2,7 @@
 import businessImage from '../../../assets/images/home/business.png';
 // import serviceIcon from '../../../assets/images/home/service.svg'
 import { FaArrowDown } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 import pin from "../../../assets/images/home/pin.svg";
 
 function Bussineess() {
@@ -74,12 +75,12 @@ function Bussineess() {
 
                         {/* Book a Free Call Button */}
                         <div>
-                            <button className="bg-blablue hover:bg-blue-700 text-white font-medium py-3 pl-6 sm:pl-8 pr-14 sm:pr-16 rounded-full transition-all flex items-center gap-3 group relative text-sm sm:text-base">
+                            <Link to="/contact" className="bg-blablue hover:bg-blue-700 text-white font-medium py-3 pl-6 sm:pl-8 pr-14 sm:pr-16 rounded-full transition-all flex items-center gap-3 group relative text-sm sm:text-base">
                                 <span>Book A Free Call</span>
                                 <div className="bg-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
                                     <FaArrowDown className="text-blablue rotate-240 font-light w-3 h-3 sm:w-4 sm:h-4" />
                                 </div>
-                            </button>
+                            </Link>
                         </div>
                     </div>
 

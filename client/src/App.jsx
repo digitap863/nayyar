@@ -1,10 +1,11 @@
-import './App.css'
-import { BrowserRouter } from "react-router-dom";
-import MainRouter from "./Routes/Router.jsx";
-import { Toaster } from "react-hot-toast";
-import { useEffect } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useEffect } from 'react';
+import { Toaster } from "react-hot-toast";
+import { BrowserRouter } from "react-router-dom";
+import './App.css';
+import ScrollToTop from "./Components/ScrollToTop.jsx";
+import MainRouter from "./Routes/Router.jsx";
 
 function App() {
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <MainRouter />
         <Toaster />
       </BrowserRouter>

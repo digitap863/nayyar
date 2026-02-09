@@ -1,15 +1,16 @@
 import { FaArrowDown } from "react-icons/fa6"
+import { Link } from 'react-router-dom'
 import experienceImage from '../../../assets/images/about/experience.svg'
 
 function Experience() {
     // Reusable Button Component
     const ViewAllServicesButton = ({ className = "" }) => (
-        <button className={`bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-6 sm:pl-8 pr-14 sm:pr-16 rounded-full transition-all flex items-center gap-3 group relative text-sm sm:text-base ${className}`}>
+        <Link to="/services" className={`bg-blablue hover:bg-blue-700 text-white font-base py-3 pl-6 sm:pl-8 pr-14 sm:pr-16 rounded-full transition-all flex items-center gap-3 group relative text-sm sm:text-base ${className}`}>
             <span>View All Services</span>
             <div className="bg-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
                 <FaArrowDown className="text-blablue rotate-240 font-light w-3 h-3" />
             </div>
-        </button>
+        </Link>
     )
 
     return (

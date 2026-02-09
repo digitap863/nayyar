@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6"
+import { Link } from 'react-router-dom'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/navigation'
@@ -88,12 +89,12 @@ function Insight() {
                     </h2>
 
                     {/* View More Blogs Button */}
-                    <button className="bg-blablue hover:bg-blue-700 text-white font-medium py-3 pl-6 sm:pl-8 pr-14 sm:pr-16 rounded-full transition-all flex items-center gap-3 group relative text-sm sm:text-base">
+                    <Link to="/blogs" className="bg-blablue hover:bg-blue-700 text-white font-medium py-3 pl-6 sm:pl-8 pr-14 sm:pr-16 rounded-full transition-all flex items-center gap-3 group relative text-sm sm:text-base">
                         <span>View More Blogs</span>
                         <div className="bg-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center group-hover:scale-105 transition-transform absolute right-1">
                             <FaArrowRight className="text-blablue w-3 h-3 sm:w-4 sm:h-4 -rotate-45" />
                         </div>
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Desktop Blog Grid - Hidden on mobile */}

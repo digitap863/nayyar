@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import building1 from '../../../assets/images/home/buildingno1.png'
 import building2 from '../../../assets/images/home/buildingno2.png'
 import threepeople from '../../../assets/images/home/threepeople.svg'
@@ -23,9 +24,9 @@ function Banner() {
 
           {/* Buttons */}
           <div className="flex items-center justify-center gap-4 relative z-10">
-            <button className="bg-blablue hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition">
+            <Link to="/about" className="bg-blablue hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition">
               Learn More
-            </button>
+            </Link>
             <img src={vdoplay} alt="Video Play" className="w-14 h-14" />
           </div>
         </div>
@@ -40,7 +41,7 @@ function Banner() {
             data-aos="fade-up"
             data-aos-duration="500"
             data-aos-delay="100"
-            />
+          />
           <img
             src={building2}
             alt="Building background"
