@@ -1,63 +1,55 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6"
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/navigation'
 import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { AxiosAdmin } from '../../../api/url'
 
 import client1 from '../../../assets/images/home/client1.png'
-import client2 from '../../../assets/images/home/client2.png'
-import client3 from '../../../assets/images/home/client3.png'
 import doubleq from '../../../assets/images/home/doubleq.png'
 
 function Testimonials() {
     const swiperRef = useRef(null)
+    const [testimonials, setTestimonials] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    const testimonials = [
-        {
-            id: 1,
-            quote: "Nayyar's service exceeded expectations. Their team was proactive, resolved issues quickly, and guided me through the entire licensing journey.",
-            name: "Jane Cooper",
-            role: "Mechanic",
-            image: client1
-        },
-        {
-            id: 2,
-            quote: "Nayyar made my business setup incredibly smooth. Their team handled every document and approval with precision. I saved so much time and avoided stress, making the entire process efficient and hassle-free.",
-            name: "Arlene McCoy",
-            role: "Entrepreneur",
-            image: client2
-        },
-        {
-            id: 3,
-            quote: "I was amazed by their professionalism and speed. Nayyar managed all government procedures perfectly, allowing me to focus on my operations. Their guidance made every step clear, and extremely convenient.",
-            name: "Cameron Williamson",
-            role: "Entrepreneur",
-            image: client3
-        },
-        {
-            id: 4,
-            quote: "Nayyar's service exceeded expectations. Their team was proactive, resolved issues quickly, and guided me through the entire licensing journey.",
-            name: "Jane Cooper",
-            role: "Mechanic",
-            image: client1
-        },
-        {
-            id: 5,
-            quote: "Nayyar made my business setup incredibly smooth. Their team handled every document and approval with precision. I saved so much time and avoided stress, making the entire process efficient and hassle-free.",
-            name: "Arlene McCoy",
-            role: "Entrepreneur",
-            image: client2
-        },
-        {
-            id: 6,
-            quote: "I was amazed by their professionalism and speed. Nayyar managed all government procedures perfectly, allowing me to focus on my operations. Their guidance made every step clear, and extremely convenient.",
-            name: "Cameron Williamson",
-            role: "Entrepreneur",
-            image: client3
-        },
-    ]
+    // Fetch testimonials from API
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            try {
+                const response = await AxiosAdmin.get('/testimonials')
+                if (response.data.success) {
+                    setTestimonials(response.data.data)
+                }
+            } catch (error) {
+                console.error('Error fetching testimonials:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchTestimonials()
+    }, [])
+
+    // Show loading state or fallback
+    if (loading) {
+        return (
+            <div className="w-full bg-[#EFEFEF] py-10 md:py-20 relative">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-center items-center h-64">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blablue"></div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    // Don't render if no testimonials
+    if (testimonials.length === 0) {
+        return null
+    }
 
     return (
         <div className="w-full bg-[#EFEFEF] py-10 md:py-20 relative">
@@ -96,7 +88,7 @@ function Testimonials() {
                         modules={[Navigation, Autoplay]}
                         spaceBetween={16}
                         slidesPerView={1.15}
-                        loop={true}
+                        loop={testimonials.length > 3}
                         autoplay={{
                             delay: 3000,
                             disableOnInteraction: false,
@@ -117,7 +109,7 @@ function Testimonials() {
                         className="testimonials-swiper"
                     >
                         {testimonials.map((testimonial) => (
-                            <SwiperSlide key={testimonial.id}>
+                            <SwiperSlide key={testimonial._id}>
                                 <div className="bg-white rounded-2xl p-8 h-full flex flex-col">
                                     {/* Quote Icon */}
                                     <div className="mb-4 sm:mb-6">
@@ -126,7 +118,7 @@ function Testimonials() {
 
                                     {/* Quote Text */}
                                     <p className="text-gray-700 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 flex-grow">
-                                        {testimonial.quote}
+                                        {testimonial.message}
                                     </p>
 
                                     {/* Client Info */}
@@ -135,7 +127,7 @@ function Testimonials() {
                                 <div className="flex flex-col gap-3 pt-4 sm:pt-5">
                                     <div className="flex items-center gap-3">
                                         <img
-                                            src={testimonial.image}
+                                            src={testimonial.Image || client1}
                                             alt={testimonial.name}
                                             className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-gray-700"
                                         />
@@ -144,7 +136,7 @@ function Testimonials() {
                                                 {testimonial.name}
                                             </h4>
                                             <p className="text-gray-500 text-xs">
-                                                {testimonial.role}
+                                                {testimonial.position}
                                             </p>
                                         </div>
                                     </div>
