@@ -1,54 +1,45 @@
-import { useRef } from 'react'
-import { FaArrowDown, FaArrowLeft, FaArrowRight, FaLinkedin } from "react-icons/fa6"
+import { useEffect, useRef, useState } from 'react'
+import { FaArrowLeft, FaArrowRight, FaLinkedin } from "react-icons/fa6"
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/navigation'
-import { Navigation } from 'swiper/modules'
+import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import { default as expert1, default as expert2, default as expert3, default as expert4 } from '../../../assets/images/about/team1.png'
+import { AxiosAdmin } from '../../../api/url'
 
 function Experts() {
     const swiperRef = useRef(null)
+    const [teams, setTeams] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    const experts = [
-        {
-            id: 1,
-            image: expert1,
-            name: 'Ann Maria',
-            position: 'SENIOR MANAGER'
-        },
-        {
-            id: 2,
-            image: expert2,
-            name: 'Ann Maria',
-            position: 'SENIOR MANAGER'
-        },
-        {
-            id: 3,
-            image: expert3,
-            name: 'Ann Maria',
-            position: 'SENIOR MANAGER'
-        },
-        {
-            id: 4,
-            image: expert4,
-            name: 'Ann Maria',
-            position: 'SENIOR MANAGER'
-        },
-        {
-            id: 5,
-            image: expert1,
-            name: 'Ann Maria',
-            position: 'SENIOR MANAGER'
-        },
-        {
-            id: 6,
-            image: expert2,
-            name: 'Ann Maria',
-            position: 'SENIOR MANAGER'
+    useEffect(() => {
+        const fetchTeams = async () => {
+            try {
+                const response = await AxiosAdmin.get('/teams')
+                if (response.data.success) {
+                    setTeams(response.data.data)
+                }
+            } catch (error) {
+                console.error('Error fetching teams:', error)
+            } finally {
+                setLoading(false)
+            }
         }
-    ]
+
+        fetchTeams()
+    }, [])
+
+    if (loading) {
+        return (
+            <div className="w-full bg-white py-16 sm:py-20 flex justify-center items-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blablue"></div>
+            </div>
+        )
+    }
+
+    if (teams.length === 0) {
+        return null
+    }
 
     return (
         <div className="w-full bg-white py-16 sm:py-20 overflow-hidden ">
@@ -81,9 +72,10 @@ function Experts() {
                 {/* Experts Carousel */}
                 <div data-aos="fade-up" data-aos-delay="100">
                     <Swiper
-                        modules={[Navigation]}
+                        modules={[Navigation, Autoplay]}
                         spaceBetween={16}
                         slidesPerView={1.25}
+                        loop={teams.length > 4}
                         onSwiper={(swiper) => {
                             swiperRef.current = swiper
                         }}
@@ -107,39 +99,60 @@ function Experts() {
                         }}
                         className="experts-swiper"
                     >
-                        {experts.map((expert) => (
-                            <SwiperSlide key={expert.id}>
+                        {teams.map((expert) => (
+                            <SwiperSlide key={expert._id}>
                                 <div className="relative rounded-xl overflow-hidden bg-gray-300 group cursor-pointer">
                                     {/* Expert Image */}
-                                    <img
-                                        src={expert.image}
-                                        alt={expert.name}
-                                        className="w-full h-auto object-cover grayscale"
-                                    />
-
-                                    {/* Arrow Icon Button - Hidden on hover */}
-                                    <div className="absolute top-6 right-6 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all group-hover:opacity-0 group-hover:invisible">
-                                        <FaArrowDown className='-rotate-120 text-blablue' />
+                                    <div className="h-[400px] overflow-hidden">
+                                        <img
+                                            src={expert.Image}
+                                            alt={expert.name}
+                                            className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-110"
+                                        />
                                     </div>
 
                                     {/* Name and Position Overlay */}
                                     <div className="absolute bottom-2 left-2 right-2 rounded-xl bg-white group-hover:bg-[#1D1EE3] text-black group-hover:text-white px-5 py-4 flex items-center justify-between transition-all duration-300">
                                         <div>
-                                            <h3 className="text-lg font-semibold">
+                                            <h3 className="text-lg font-semibold whitespace-nowrap overflow-hidden text-ellipsis max-w-[150px]">
                                                 {expert.name}
                                             </h3>
-                                            <p className="text-xs group-hover:text-blue-100">
+                                            <p className="text-[10px] group-hover:text-blue-100 uppercase">
                                                 {expert.position}
                                             </p>
                                         </div>
-                                        <div className="flex items-center justify-center">
-                                            <FaLinkedin className="text-black group-hover:text-white text-lg w-5 h-5 transition-colors duration-300" />
-                                        </div>
+                                        {expert.linkedinlink && (
+                                            <a
+                                                href={expert.linkedinlink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center"
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                <FaLinkedin className="text-black group-hover:text-white text-lg w-5 h-5 transition-colors duration-300" />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                </div>
+
+                {/* Mobile Navigation Buttons */}
+                <div className="flex md:hidden justify-center gap-3 mt-8">
+                    <button
+                        onClick={() => swiperRef.current?.slidePrev()}
+                        className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
+                    >
+                        <FaArrowLeft className="text-lg" />
+                    </button>
+                    <button
+                        onClick={() => swiperRef.current?.slideNext()}
+                        className="bg-blablue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all"
+                    >
+                        <FaArrowRight className="text-lg" />
+                    </button>
                 </div>
             </div>
         </div>
